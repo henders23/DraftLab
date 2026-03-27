@@ -6,15 +6,15 @@ import {
 import NavItem from './NavItem';
 
 const NAV_ITEMS = [
-  { id: 'dashboard', icon: <LayoutDashboard size={20} />, label: 'Dashboard' },
-  { id: 'ai',        icon: <Bot size={20} />,             label: 'AI Feedback' },
-  { id: 'peer',      icon: <Users size={20} />,           label: 'Peer Review' },
-  { id: 'learning',  icon: <BookOpen size={20} />,        label: 'Learning Zone' },
-  { id: 'events',    icon: <Calendar size={20} />,        label: 'Events & Co-working' },
-  { id: 'docs',      icon: <FileText size={20} />,        label: 'My Documents' },
+  { to: '/',         icon: <LayoutDashboard size={20} />, label: 'Dashboard' },
+  { to: '/ai',       icon: <Bot size={20} />,             label: 'AI Feedback' },
+  { to: '/peer',     icon: <Users size={20} />,           label: 'Peer Review' },
+  { to: '/learning', icon: <BookOpen size={20} />,        label: 'Learning Zone' },
+  { to: '/events',   icon: <Calendar size={20} />,        label: 'Events & Co-working' },
+  { to: '/docs',     icon: <FileText size={20} />,        label: 'My Documents' },
 ];
 
-export default function Sidebar({ activeTab, onTabChange }) {
+export default function Sidebar() {
   return (
     <aside className="w-64 bg-zinc-900 border-r border-zinc-800 flex flex-col shrink-0">
       {/* Brand */}
@@ -28,14 +28,8 @@ export default function Sidebar({ activeTab, onTabChange }) {
 
       {/* Navigation */}
       <nav className="flex-1 px-4 space-y-2">
-        {NAV_ITEMS.map(({ id, icon, label }) => (
-          <NavItem
-            key={id}
-            icon={icon}
-            label={label}
-            isActive={activeTab === id}
-            onClick={() => onTabChange(id)}
-          />
+        {NAV_ITEMS.map(({ to, icon, label }) => (
+          <NavItem key={to} to={to} icon={icon} label={label} />
         ))}
       </nav>
 
