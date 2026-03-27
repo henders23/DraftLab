@@ -3,7 +3,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import DashboardView from './views/DashboardView';
-import PlaceholderView from './views/PlaceholderView';
+import AIFeedbackView from './views/AIFeedbackView';
+import PeerReviewView from './views/PeerReviewView';
+import LearningView from './views/LearningView';
+import EventsView from './views/EventsView';
+import DocsView from './views/DocsView';
 
 export default function App() {
   return (
@@ -17,11 +21,11 @@ export default function App() {
           <div className="flex-1 overflow-y-auto p-8">
             <Routes>
               <Route path="/" element={<DashboardView />} />
-              <Route path="/ai" element={<PlaceholderView />} />
-              <Route path="/peer" element={<PlaceholderView />} />
-              <Route path="/learning" element={<PlaceholderView />} />
-              <Route path="/events" element={<PlaceholderView />} />
-              <Route path="/docs" element={<PlaceholderView />} />
+              <Route path="/ai" element={<AIFeedbackView />} />
+              <Route path="/peer" element={<PeerReviewView />} />
+              <Route path="/learning" element={<LearningView />} />
+              <Route path="/events" element={<EventsView />} />
+              <Route path="/docs" element={<DocsView />} />
             </Routes>
           </div>
         </main>
