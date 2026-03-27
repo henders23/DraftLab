@@ -1,6 +1,7 @@
 import React from 'react';
 import { Calendar, Clock, Users, Tag } from 'lucide-react';
 import { EVENTS } from '../data/events';
+import { useToast } from '../context/ToastContext';
 
 const TYPE_COLORS = {
   Workshop: 'text-yellow-400 bg-yellow-400/10 border-yellow-400/20',
@@ -8,6 +9,7 @@ const TYPE_COLORS = {
 };
 
 export default function EventsView() {
+  const toast = useToast();
   const todayCount = EVENTS.filter((e) => e.isToday).length;
 
   return (
@@ -56,7 +58,10 @@ export default function EventsView() {
                     </span>
                     <h3 className="text-base font-medium text-white">{event.title}</h3>
                   </div>
-                  <button className="text-xs font-semibold px-4 py-1.5 bg-yellow-400 hover:bg-yellow-300 text-black rounded-xl transition-colors shrink-0">
+                  <button
+                    onClick={() => toast(event.isToday ? `Joining "${event.title}" — link opening…` : `Registered for "${event.title}"!`)}
+                    className="text-xs font-semibold px-4 py-1.5 bg-yellow-400 hover:bg-yellow-300 text-black rounded-xl transition-colors shrink-0"
+                  >
                     {event.isToday ? 'Join Now' : 'Register'}
                   </button>
                 </div>

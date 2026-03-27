@@ -37,11 +37,9 @@ export default function Sidebar() {
       <div className="p-4 mt-auto">
         <div className="bg-zinc-800/50 rounded-xl p-4 border border-zinc-700/50">
           <div className="flex items-center gap-3 mb-3">
-            <img
-              src="/api/placeholder/40/40"
-              alt="User"
-              className="w-10 h-10 rounded-full border-2 border-yellow-400"
-            />
+            <div className="w-10 h-10 rounded-full border-2 border-yellow-400 bg-yellow-400/20 flex items-center justify-center text-sm font-bold text-yellow-400 shrink-0">
+              ER
+            </div>
             <div>
               <p className="text-sm font-medium text-white">Elena R.</p>
               <p className="text-xs text-zinc-400">12 Day Streak 🔥</p>
