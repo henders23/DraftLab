@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { FileText, Plus, ArrowRight, Pencil, Share2, Trash2, ArrowUpDown } from 'lucide-react';
 import { DRAFTS } from '../data/drafts';
+import { useToast } from '../context/ToastContext';
 
 const SORT_OPTIONS = ['Date modified', 'Status', 'Word count'];
 
 export default function DocsView() {
+  const toast = useToast();
   const [sort, setSort] = useState('Date modified');
 
   return (
@@ -73,13 +75,13 @@ export default function DocsView() {
                     {draft.status}
                   </span>
                   <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <button className="p-1.5 rounded-lg hover:bg-zinc-800 text-zinc-500 hover:text-white transition-colors" title="Edit">
+                    <button onClick={() => toast(`Opening "${draft.title}" for editing…`)} className="p-1.5 rounded-lg hover:bg-zinc-800 text-zinc-500 hover:text-white transition-colors" title="Edit">
                       <Pencil size={13} />
                     </button>
-                    <button className="p-1.5 rounded-lg hover:bg-zinc-800 text-zinc-500 hover:text-white transition-colors" title="Share">
+                    <button onClick={() => toast(`Share link copied for "${draft.title}"!`)} className="p-1.5 rounded-lg hover:bg-zinc-800 text-zinc-500 hover:text-white transition-colors" title="Share">
                       <Share2 size={13} />
                     </button>
-                    <button className="p-1.5 rounded-lg hover:bg-zinc-800 text-zinc-500 hover:text-rose-400 transition-colors" title="Delete">
+                    <button onClick={() => toast(`"${draft.title}" moved to trash.`)} className="p-1.5 rounded-lg hover:bg-zinc-800 text-zinc-500 hover:text-rose-400 transition-colors" title="Delete">
                       <Trash2 size={13} />
                     </button>
                   </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Users, Coins, FileText, CheckCircle, Clock } from 'lucide-react';
 import { PEER_REQUESTS } from '../data/modules';
+import { useToast } from '../context/ToastContext';
 
 const EXTRA_REQUESTS = [
   {
@@ -38,6 +39,7 @@ const AVATAR_COLORS = [
 ];
 
 export default function PeerReviewView() {
+  const toast = useToast();
   return (
     <div className="max-w-3xl mx-auto space-y-8 animate-in fade-in duration-500">
 
@@ -80,7 +82,10 @@ export default function PeerReviewView() {
                   <span className="flex items-center gap-1 text-xs text-yellow-400 bg-yellow-400/10 px-2.5 py-1 rounded-full">
                     <Coins size={11} /> +{req.credits} credits
                   </span>
-                  <button className="text-xs font-medium px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg transition-colors">
+                  <button
+                    onClick={() => toast(`Review accepted — +${req.credits} credits incoming!`)}
+                    className="text-xs font-medium px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg transition-colors"
+                  >
                     Accept Review
                   </button>
                 </div>
