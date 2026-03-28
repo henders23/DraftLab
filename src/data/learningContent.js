@@ -10,6 +10,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { lessons as phdLanguageLessons } from './lessons/phd-language';
+import { lessons as academicVoiceLessons } from './lessons/academic-voice';
 
 export const TOPICS = [
 
@@ -30,44 +31,7 @@ export const TOPICS = [
     description: 'Develop a confident, authoritative writing voice — one that positions you clearly within scholarly debates.',
     icon: 'Mic',
     color: 'violet',
-    lessons: [
-      {
-        slug: 'first-vs-third-person',
-        title: 'First Person vs Third Person',
-        durationMins: 10,
-        intro: 'Whether to write "I argue" or "this thesis argues" is not a minor style choice — it reflects disciplinary convention, authorial positioning, and the degree of confidence you\'re projecting.',
-        extracts: [],
-        activityPrompt: '',
-        keyTakeaways: [],
-      },
-      {
-        slug: 'positioning',
-        title: 'Positioning Yourself in the Literature',
-        durationMins: 12,
-        intro: 'A literature review is not a reading list. It\'s an argument about where knowledge stands — and why your research is necessary. Positioning means showing where you agree, where you diverge, and what gap your work addresses.',
-        extracts: [],
-        activityPrompt: '',
-        keyTakeaways: [],
-      },
-      {
-        slug: 'making-claims',
-        title: 'Making Confident Claims',
-        durationMins: 10,
-        intro: 'The difference between a PhD thesis and a research essay is often the confidence with which it stakes out original claims. Your job is not just to report what others have found, but to say something new — clearly and without over-hedging.',
-        extracts: [],
-        activityPrompt: '',
-        keyTakeaways: [],
-      },
-      {
-        slug: 'academic-critique',
-        title: 'Expressing Academic Critique',
-        durationMins: 10,
-        intro: 'Being critical doesn\'t mean being dismissive. Academic critique means identifying limits, questioning assumptions, and noting what a source cannot account for — while still acknowledging what it contributes.',
-        extracts: [],
-        activityPrompt: '',
-        keyTakeaways: [],
-      },
-    ],
+    lessons: academicVoiceLessons,
   },
 
   // ── TOPIC 3 ─────────────────────────────────────────────────────────────────
