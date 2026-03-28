@@ -9,6 +9,8 @@
 //   yellow | emerald | blue | rose | violet | orange
 // ─────────────────────────────────────────────────────────────────────────────
 
+import { lessons as phdLanguageLessons } from './lessons/phd-language';
+
 export const TOPICS = [
 
   // ── TOPIC 1 ─────────────────────────────────────────────────────────────────
@@ -18,53 +20,7 @@ export const TOPICS = [
     description: 'Master the vocabulary, grammar, and register that marks doctoral writing across every discipline.',
     icon: 'PenLine',
     color: 'yellow',
-    lessons: [
-      {
-        slug: 'reporting-verbs',
-        title: 'Reporting Verbs and What They Signal',
-        durationMins: 12,
-        intro: 'The verb you choose to introduce another scholar\'s work is never neutral — it tells your reader how much authority you\'re granting the claim, and where you stand in relation to it.',
-        extracts: [],
-        activityPrompt: '',
-        keyTakeaways: [],
-      },
-      {
-        slug: 'hedging',
-        title: 'Hedging and Cautious Language',
-        durationMins: 10,
-        intro: 'In academic writing, caution is a sign of intellectual rigour, not weakness. Hedging signals that you are making careful, evidence-grounded claims — not overstating what your data can support.',
-        extracts: [],
-        activityPrompt: '',
-        keyTakeaways: [],
-      },
-      {
-        slug: 'tense-conventions',
-        title: 'Tense Conventions by Chapter Type',
-        durationMins: 10,
-        intro: 'Tense in academic writing carries meaning about the status of knowledge. Choosing the right tense helps readers understand whether you\'re describing established findings, your own study, or an ongoing debate.',
-        extracts: [],
-        activityPrompt: '',
-        keyTakeaways: [],
-      },
-      {
-        slug: 'signposting',
-        title: 'Signposting and Guiding Your Reader',
-        durationMins: 8,
-        intro: 'Signposting is how you make the structure of your argument visible. In a long thesis, that visibility is not a nicety — it is essential.',
-        extracts: [],
-        activityPrompt: '',
-        keyTakeaways: [],
-      },
-      {
-        slug: 'nominalisation',
-        title: 'Nominalisation and Formal Register',
-        durationMins: 10,
-        intro: 'Nominalisation — turning verbs and adjectives into nouns — is one of the most distinctive features of formal academic prose. Used well, it builds precision and density; overused, it obscures meaning.',
-        extracts: [],
-        activityPrompt: '',
-        keyTakeaways: [],
-      },
-    ],
+    lessons: phdLanguageLessons,
   },
 
   // ── TOPIC 2 ─────────────────────────────────────────────────────────────────
