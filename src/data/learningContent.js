@@ -11,6 +11,7 @@
 
 import { lessons as phdLanguageLessons } from './lessons/phd-language';
 import { lessons as academicVoiceLessons } from './lessons/academic-voice';
+import { lessons as literatureReviewLessons } from './lessons/literature-review';
 
 export const TOPICS = [
 
@@ -41,53 +42,7 @@ export const TOPICS = [
     description: 'Move from summary to genuine synthesis — structuring the field, locating the gap, and entering the conversation with authority.',
     icon: 'BookMarked',
     color: 'emerald',
-    lessons: [
-      {
-        slug: 'synthesis-vs-summary',
-        title: 'Synthesis vs Summary',
-        durationMins: 15,
-        intro: 'A literature review that summarises sources one by one is an annotated bibliography, not a synthesis. Real synthesis identifies patterns, tensions, and convergences — and shows what the field as a whole does and doesn\'t know.',
-        extracts: [],
-        activityPrompt: '',
-        keyTakeaways: [],
-      },
-      {
-        slug: 'research-gap',
-        title: 'Identifying the Research Gap',
-        durationMins: 12,
-        intro: 'The research gap is the engine of your introduction and literature review. A well-articulated gap doesn\'t just say "this hasn\'t been studied" — it shows what existing work cannot account for, and why that matters.',
-        extracts: [],
-        activityPrompt: '',
-        keyTakeaways: [],
-      },
-      {
-        slug: 'critical-evaluation',
-        title: 'Critical Evaluation of Sources',
-        durationMins: 12,
-        intro: 'Citing a source is not the same as endorsing it. Critical evaluation means engaging with a study\'s methodology, sample, theoretical assumptions, or scope — and flagging where these limit what we can conclude.',
-        extracts: [],
-        activityPrompt: '',
-        keyTakeaways: [],
-      },
-      {
-        slug: 'thematic-structure',
-        title: 'Structuring the Literature Thematically',
-        durationMins: 10,
-        intro: 'Most literature reviews are best organised thematically rather than chronologically. Thematic organisation groups sources by idea, debate, or concept — letting you show how scholars are responding to the same set of questions.',
-        extracts: [],
-        activityPrompt: '',
-        keyTakeaways: [],
-      },
-      {
-        slug: 'lit-review-language',
-        title: 'Common Literature Review Language',
-        durationMins: 8,
-        intro: 'Certain phrases and structures recur across literature reviews in almost every discipline. Understanding these patterns helps you write fluently within — and eventually beyond — your disciplinary norms.',
-        extracts: [],
-        activityPrompt: '',
-        keyTakeaways: [],
-      },
-    ],
+    lessons: literatureReviewLessons,
   },
 
   // ── TOPIC 4 ─────────────────────────────────────────────────────────────────
