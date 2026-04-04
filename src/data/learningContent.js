@@ -13,6 +13,7 @@ import { lessons as phdLanguageLessons } from './lessons/phd-language';
 import { lessons as academicVoiceLessons } from './lessons/academic-voice';
 import { lessons as literatureReviewLessons } from './lessons/literature-review';
 import { lessons as paragraphStructureLessons } from './lessons/paragraph-structure';
+import { lessons as researchQuestionsLessons } from './lessons/research-questions';
 
 export const TOPICS = [
 
@@ -63,60 +64,7 @@ export const TOPICS = [
     description: 'Craft focused, arguable research questions and thesis statements that give your writing direction and purpose.',
     icon: 'HelpCircle',
     color: 'orange',
-    lessons: [
-      {
-        slug: 'what-makes-a-good-rq',
-        title: 'What Makes a Good Research Question',
-        durationMins: 10,
-        intro: 'A research question must be answerable, significant, and sufficiently focused. Too broad and it becomes a topic; too narrow and it becomes a sub-question. Getting the scope right takes iteration.',
-        extracts: [],
-        activityPrompt: 'Test your research question against four criteria: (1) Answerable — could evidence in principle resolve it? (2) Significant — does it matter beyond your thesis? (3) Focused — does it have clear boundaries? (4) Open — does it require genuine investigation rather than a simple lookup? If it fails any test, rewrite and test again. Bring both the original and the revision to your next supervision.',
-        keyTakeaways: [
-          'A good research question is answerable, significant, focused, and genuinely open — a question whose answer you already know is not a research question.',
-          'A question that is too broad becomes a topic area; one that is too narrow becomes a data point. Scope is adjusted through iteration, not inspiration.',
-          'Your research question is your thesis\'s compass — every design decision, from your literature review to your methods, should be traceable back to it.',
-        ],
-      },
-      {
-        slug: 'thesis-statement',
-        title: 'Writing a Thesis Statement',
-        durationMins: 8,
-        intro: 'A thesis statement is a one-to-two-sentence summary of your central argument. Not all disciplines require one explicitly, but every thesis benefits from the clarity that writing one forces.',
-        extracts: [],
-        activityPrompt: 'Write a thesis statement in exactly two sentences: the first states your central claim; the second states how your thesis will demonstrate it. Don\'t hedge excessively — the statement should make a clear, arguable claim that someone could reasonably disagree with. If you cannot write the second sentence (how you will demonstrate it), your methodology may not yet be aligned with your argument.',
-        keyTakeaways: [
-          'A thesis statement makes a specific, arguable claim — not an observation, a question, or a description of a topic.',
-          'The statement should be falsifiable: if no evidence could in principle challenge it, it is not an argument but an assertion.',
-          'Writing a thesis statement — even if your discipline doesn\'t formally require one — is one of the most useful clarifying exercises at any stage of the PhD.',
-        ],
-      },
-      {
-        slug: 'sub-questions',
-        title: 'Sub-questions and Objectives',
-        durationMins: 8,
-        intro: 'Sub-questions break your central research question into manageable investigative units. Each chapter of your thesis will typically address one sub-question — so getting this architecture right matters early.',
-        extracts: [],
-        activityPrompt: 'Map your sub-questions or research objectives to your chapter structure — draw a line from each sub-question to the chapter or section that addresses it. Is there a sub-question with no chapter? It may not belong in the thesis. Is there a chapter that addresses no sub-question? Its purpose needs rethinking. The map should be clean and logical: the architecture of your sub-questions is the architecture of your thesis.',
-        keyTakeaways: [
-          'Sub-questions break the central research question into investigative units — each chapter typically addresses one, and later sub-questions often depend on answers established by earlier ones.',
-          'The number of sub-questions and the number of substantive chapters should roughly correspond.',
-          'Objectives (what you will do) and sub-questions (what you will find out) serve different functions — be clear which convention your discipline expects.',
-        ],
-      },
-      {
-        slug: 'discipline-conventions',
-        title: 'Disciplinary Conventions for Framing Research',
-        durationMins: 10,
-        intro: 'How a research question is framed varies significantly across disciplines. Sciences tend to frame hypotheses; humanities tend to frame interpretive problems; social sciences often do both. Knowing your discipline\'s norms is essential.',
-        extracts: [],
-        activityPrompt: 'Find three recent PhD theses in your discipline through your university library or the British Library EThOS database. Read the first five pages of each. How does each frame the research problem? Does it open with a context statement, a gap, a puzzle, or a hypothesis? What verb does each use — "explore", "examine", "argue", "investigate", "test"? What does this pattern tell you about what your discipline considers a legitimate research motivation?',
-        keyTakeaways: [
-          'Sciences typically frame a research gap in relation to an empirical problem or untested hypothesis; humanities often frame an interpretive or conceptual problem; social sciences frequently combine both.',
-          'The verb you use to frame your research question signals methodological commitments: "test" implies a hypothesis; "explore" implies inductive inquiry; "argue" implies a position.',
-          'Reading theses in your field — not just articles — is one of the most efficient ways to internalise the disciplinary conventions of framing.',
-        ],
-      },
-    ],
+    lessons: researchQuestionsLessons,
   },
 
   // ── TOPIC 6 ─────────────────────────────────────────────────────────────────
