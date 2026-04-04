@@ -16,6 +16,7 @@ import { lessons as paragraphStructureLessons } from './lessons/paragraph-struct
 import { lessons as researchQuestionsLessons } from './lessons/research-questions';
 import { lessons as introductionChapterLessons } from './lessons/introduction-chapter';
 import { lessons as methodologyChapterLessons } from './lessons/methodology-chapter';
+import { lessons as resultsAnalysisLessons } from './lessons/results-analysis';
 
 export const TOPICS = [
 
@@ -96,60 +97,7 @@ export const TOPICS = [
     description: 'Present your findings with precision — separating description from interpretation, and using data to build your argument.',
     icon: 'BarChart2',
     color: 'emerald',
-    lessons: [
-      {
-        slug: 'description-vs-interpretation',
-        title: 'Description vs Interpretation',
-        durationMins: 10,
-        intro: 'One of the most common weaknesses in results chapters is conflating what the data shows with what it means. Learning to separate these two moves — and to signal clearly which you are doing — is fundamental to analytic writing.',
-        extracts: [],
-        activityPrompt: 'Take two paragraphs from your results or findings chapter. Label every sentence D (describing what the data shows) or I (interpreting what it means). A strong results section needs both, clearly signalled. If any paragraph runs three or more sentences of interpretation without anchoring back in the data, revise. If any paragraph describes data for five sentences without a moment of interpretation, ask what it is for.',
-        keyTakeaways: [
-          'Description answers "what?" — it reports what the data shows. Interpretation answers "so what?" — it states what the data means. Keep them analytically distinct.',
-          'Signal interpretation explicitly: "This suggests...", "The pattern indicates...", "A plausible explanation is..." — these phrases tell the reader you are moving from evidence to inference.',
-          'The expected ratio of description to interpretation varies by discipline: scientific results chapters weight description heavily; social science analysis chapters typically integrate both throughout.',
-        ],
-      },
-      {
-        slug: 'referring-to-figures',
-        title: 'Referring to Figures and Tables',
-        durationMins: 8,
-        intro: 'A figure or table should not speak for itself — you must direct the reader to what matters. The language for introducing and commenting on visual data has its own conventions, and using them correctly signals expertise.',
-        extracts: [],
-        activityPrompt: 'Select one figure or table from your thesis. Write three sentences for it: (1) a directing sentence that tells the reader where to look and names the key pattern ("Figure 3 shows a marked decline in X between 2010 and 2020..."); (2) a description of one or two specific data points that evidence the pattern; (3) a sentence interpreting what this means for your argument. Check that your sentences don\'t simply repeat the figure caption.',
-        keyTakeaways: [
-          'Never present a figure or table without accompanying prose — data displays don\'t interpret themselves, and leaving them to stand alone is a missed argumentative opportunity.',
-          'Direct the reader actively: "As Figure 3 shows..." or "Table 2 reveals a striking divergence..." — don\'t just say "see Figure 3" and move on.',
-          'Be selective: discuss the data points or patterns that matter for your argument, not every cell in the table.',
-        ],
-      },
-      {
-        slug: 'organising-findings',
-        title: 'Organising Your Findings',
-        durationMins: 10,
-        intro: 'How you sequence your findings shapes the argument your results chapter makes. Whether you organise by theme, research question, chronology, or method depends on your discipline and data — but the choice must be deliberate.',
-        extracts: [],
-        activityPrompt: 'Map your findings to your research questions or analytical themes on paper. Draw a line from each major finding to the research question or theme it addresses. Are there findings that don\'t connect to any question? Are there questions that no finding addresses? Use this map to diagnose structural problems before they become drafting problems — it is much easier to reorganise at the mapping stage than at the revision stage.',
-        keyTakeaways: [
-          'Organise findings by research question, theme, or analytical category — not by the order in which data was collected, which is a process logic, not an argument logic.',
-          'Every major finding should link back to your research questions — if it doesn\'t, question whether it belongs in the main chapter or in an appendix.',
-          'Use section headings in your findings chapter to signal the organising logic: thematic headings tell the reader what analytical work each section does, not just what topic it covers.',
-        ],
-      },
-      {
-        slug: 'unexpected-results',
-        title: 'Addressing Unexpected or Null Results',
-        durationMins: 8,
-        intro: 'Results that don\'t confirm your hypothesis are not failures — they are findings. The way you write about unexpected or null results reveals the intellectual maturity of your analysis.',
-        extracts: [],
-        activityPrompt: 'Identify one finding from your data that surprised you or ran counter to what you expected. Write a paragraph that: (1) states the finding clearly; (2) explains why it was unexpected given the existing literature or your hypotheses; (3) offers two possible explanations for it; (4) states which you find more plausible and why. Unexpected findings often produce the most intellectually rich analytical writing.',
-        keyTakeaways: [
-          'Null results (finding no relationship) and unexpected results are findings — they must be reported and discussed, not minimised or buried.',
-          'Unexpected results often generate the most interesting discussion: they may reveal assumptions baked into prior research, suggest boundary conditions on existing theories, or point toward new questions.',
-          'Examiners are not looking for results that confirm everything — they are looking for a researcher who can reason carefully and honestly about what the data actually shows.',
-        ],
-      },
-    ],
+    lessons: resultsAnalysisLessons,
   },
 
   // ── TOPIC 9 ─────────────────────────────────────────────────────────────────
