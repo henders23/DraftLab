@@ -12,6 +12,7 @@
 import { lessons as phdLanguageLessons } from './lessons/phd-language';
 import { lessons as academicVoiceLessons } from './lessons/academic-voice';
 import { lessons as literatureReviewLessons } from './lessons/literature-review';
+import { lessons as paragraphStructureLessons } from './lessons/paragraph-structure';
 
 export const TOPICS = [
 
@@ -52,60 +53,7 @@ export const TOPICS = [
     description: 'Build paragraphs that develop a single idea clearly, with coherent movement from claim to evidence to analysis.',
     icon: 'AlignLeft',
     color: 'blue',
-    lessons: [
-      {
-        slug: 'topic-sentences',
-        title: 'Topic Sentences and Paragraph Focus',
-        durationMins: 8,
-        intro: 'Every academic paragraph should do one thing: develop a single idea. The topic sentence announces that idea; everything else supports, qualifies, or evidences it.',
-        extracts: [],
-        activityPrompt: 'Take five consecutive paragraphs from your draft. Underline the first sentence of each. Does each sentence make a single, arguable claim that the rest of the paragraph develops? If you can\'t underline a clear claim, write one and place it at the top. Then check the last sentence of each paragraph: does it state the significance of what has been argued, or does it just trail off?',
-        keyTakeaways: [
-          'Every paragraph should develop exactly one idea — if it\'s doing two things, split it.',
-          'The topic sentence makes a claim; the body sentences supply evidence and analysis; the closing sentence draws out the significance.',
-          'Test your topic sentences by listing them consecutively — they should read like a skeleton argument for the section.',
-        ],
-      },
-      {
-        slug: 'coherence-cohesion',
-        title: 'Coherence and Cohesion',
-        durationMins: 10,
-        intro: 'Coherence is about meaning — does the paragraph hold together logically? Cohesion is about language — do the sentences connect grammatically and lexically? A strong paragraph needs both.',
-        extracts: [],
-        activityPrompt: 'Select a paragraph from your draft and circle every linking word or phrase (however, therefore, this suggests, in contrast, building on this). Now check the logical relationship between each pair of adjacent sentences — does the linking word accurately describe the relationship? Rewrite any mismatches. Then check for cohesion: are key terms repeated or substituted consistently, or do you switch between synonyms in ways that might confuse the reader?',
-        keyTakeaways: [
-          'Coherence is the logical progression of ideas; cohesion is the linguistic signals that make that progression visible to the reader.',
-          'Use pronouns, repeated key terms, and controlled synonyms to connect each sentence to what came before.',
-          'Transitions must match the logical relationship they signal: "however" means contrast, "therefore" means inference, "furthermore" means addition — using the wrong one is misleading, not just imprecise.',
-        ],
-      },
-      {
-        slug: 'sentence-variety',
-        title: 'Sentence Variety and Rhythm',
-        durationMins: 8,
-        intro: 'Academic writing does not mean uniformly long sentences. Varied sentence length creates rhythm, emphasis, and readability — and signals a writer in control of their prose.',
-        extracts: [],
-        activityPrompt: 'Take one page of your draft and label each sentence S (short, under 15 words), M (medium, 15–30), or L (long, over 30). If the majority are M or L, identify the single most important claim in each paragraph and rewrite it as a short sentence. Read the page aloud before and after — notice whether it now has more rhythm and whether the key claims land more firmly.',
-        keyTakeaways: [
-          'Sentence length should vary — a run of uniformly long sentences becomes monotonous and forces the reader to hold too much in working memory.',
-          'Short sentences create emphasis. Use them to land a key claim, signal a pivot, or mark a conclusion.',
-          'Long sentences are best for qualification, evidence, and elaboration — not for expressing your central claims.',
-        ],
-      },
-      {
-        slug: 'argument-across-sections',
-        title: 'Building an Argument Across Sections',
-        durationMins: 10,
-        intro: 'A thesis argument is not made in a single paragraph — it accumulates across sections and chapters. Understanding how to sustain and develop a line of argument over many pages is one of the key challenges of doctoral writing.',
-        extracts: [],
-        activityPrompt: 'Write a one-sentence summary of what each chapter or major section of your thesis argues — not what it discusses, but what it argues. Lay these in sequence. Do they build cumulatively toward your central claim, or do some chapters simply add material without advancing the argument? Identify any chapter that restates rather than advances, and consider what move it needs to make to earn its place in the sequence.',
-        keyTakeaways: [
-          'Each chapter should advance the argument, not just add more material on the topic — ask of every chapter: what does this establish that the next chapter depends on?',
-          'Signpost the architecture explicitly: tell the reader at the end of each chapter what has been established and what the next chapter will do.',
-          'The cumulative argument of a thesis is always greater than the sum of its chapters — the conclusion should feel like an arrival, not a summary.',
-        ],
-      },
-    ],
+    lessons: paragraphStructureLessons,
   },
 
   // ── TOPIC 5 ─────────────────────────────────────────────────────────────────
