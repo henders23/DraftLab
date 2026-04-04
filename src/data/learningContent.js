@@ -15,6 +15,7 @@ import { lessons as literatureReviewLessons } from './lessons/literature-review'
 import { lessons as paragraphStructureLessons } from './lessons/paragraph-structure';
 import { lessons as researchQuestionsLessons } from './lessons/research-questions';
 import { lessons as introductionChapterLessons } from './lessons/introduction-chapter';
+import { lessons as methodologyChapterLessons } from './lessons/methodology-chapter';
 
 export const TOPICS = [
 
@@ -85,73 +86,7 @@ export const TOPICS = [
     description: 'Justify your research design with confidence — describing your approach, methods, and the philosophical underpinnings behind them.',
     icon: 'FlaskConical',
     color: 'blue',
-    lessons: [
-      {
-        slug: 'philosophical-framing',
-        title: 'Philosophical Framing: Ontology and Epistemology',
-        durationMins: 12,
-        intro: 'Your methodology chapter is not just a description of what you did — it is a justification of why you did it that way. Situating your approach within a philosophical framework is expected in most social science and humanities disciplines.',
-        extracts: [],
-        activityPrompt: 'Write a paragraph that works through the following chain: your ontological position (what you believe reality is like) → your epistemological position (how you believe knowledge of that reality can be obtained) → your methodological approach (how that epistemology shapes your research design). Don\'t treat these as separate boxes with labels — show how each position follows from the one before it.',
-        keyTakeaways: [
-          'Ontology (what is), epistemology (how we know), and methodology (how we study) form a chain of justification — each level must be internally consistent with the others.',
-          'Common positions: constructivism/interpretivism (reality is socially constructed, knowledge is contextual, qualitative methods suit this); post-positivism (reality is knowable but imperfectly, mixed or quantitative methods suit this).',
-          'You don\'t need to use technical philosophical vocabulary, but you do need to show that your design choices rest on coherent, considered assumptions.',
-        ],
-      },
-      {
-        slug: 'justifying-methods',
-        title: 'Justifying Your Methods',
-        durationMins: 10,
-        intro: 'The language of the methodology chapter is primarily the language of justification. You are not just describing your methods — you are defending them as the most appropriate means of answering your research questions.',
-        extracts: [],
-        activityPrompt: 'For each data collection or analysis method you use, write one sentence in this form: "I chose [method] because it is the most appropriate means of answering [specific aspect of the research question], particularly given [constraint or context]." If you struggle to complete the sentence, the method\'s inclusion needs rethinking. Then write one sentence anticipating the most obvious alternative and explaining why you did not use it.',
-        keyTakeaways: [
-          'Every method must be justified in relation to your research question — not because it is common in your field, convenient, or what your supervisor uses.',
-          'Justify by showing what each method uniquely enables: what can you see, hear, measure, or access through this method that alternatives would not allow?',
-          'Anticipating alternatives strengthens your justification: "Interviews were preferred over surveys because the research requires..." demonstrates methodological awareness.',
-        ],
-      },
-      {
-        slug: 'positionality',
-        title: 'Reflexivity and Positionality',
-        durationMins: 10,
-        intro: 'In qualitative and ethnographic research, acknowledging your own position — your background, assumptions, and relationship to the field — is not a confession of bias. It is an act of scholarly honesty that strengthens, rather than undermines, your findings.',
-        extracts: [],
-        activityPrompt: 'Write a positionality statement of 150–200 words for your methodology chapter. Address three things: (1) your relationship to the research community, topic, or data; (2) any prior assumptions or beliefs you brought to the research; (3) one specific step you took during the research to monitor or manage the influence of your position. Aim for transparency and intellectual honesty, not apology.',
-        keyTakeaways: [
-          'Positionality is particularly expected in qualitative, ethnographic, and participatory research — but relevant in any study where the researcher\'s standpoint could influence interpretation.',
-          'The goal is not to eliminate your position — that is impossible — but to be transparent enough about it that readers can assess its influence on your findings.',
-          'Reflexivity is ongoing: it is an attitude maintained throughout data collection and analysis, not a one-paragraph statement written once at the start of the chapter.',
-        ],
-      },
-      {
-        slug: 'limitations',
-        title: 'Writing About Limitations',
-        durationMins: 8,
-        intro: 'Every study has limitations. Writing about them honestly — and framing them as boundaries rather than failures — demonstrates methodological maturity and protects your findings from overinterpretation.',
-        extracts: [],
-        activityPrompt: 'List three limitations of your study. For each, work through this template: "A limitation of this study is [X]. This arises because [reason]. The consequence is [what it means for how the findings should be interpreted]. However, this does not undermine the study\'s validity because [why it remains sound]." This framing turns each limitation into evidence of your methodological self-awareness.',
-        keyTakeaways: [
-          'Limitations are constraints on what can be concluded — they are boundaries, not failures, and naming them is a sign of intellectual maturity.',
-          'Every study has limitations. The question is whether you identify them before your examiner does.',
-          'Be specific about impact: "This limits the transferability of findings to contexts where X applies" is more credible than vague gestures like "the study is limited by its small sample."',
-        ],
-      },
-      {
-        slug: 'methods-across-disciplines',
-        title: 'Methodology Conventions Across Disciplines',
-        durationMins: 10,
-        intro: 'What counts as a "methodology chapter" varies enormously: a laboratory sciences thesis may have a brief methods section; a social science thesis may dedicate twenty pages to philosophical justification. Knowing your discipline\'s conventions matters.',
-        extracts: [],
-        activityPrompt: 'Find two methodology chapters from theses in your field. Compare them on five dimensions: (1) length; (2) whether they include a philosophical framing section; (3) how much space is given to justification versus description; (4) whether positionality is addressed; (5) how limitations are handled. Use these as benchmarks for the scope, structure, and register your own chapter should aim for.',
-        keyTakeaways: [
-          'STEM methodology sections tend to be shorter and more procedural; social science and humanities chapters tend to be longer and more discursive, with explicit philosophical framing.',
-          'Whatever your discipline, the core function is identical: justify why your design is the best available means of answering your research questions.',
-          'A methodology section must be replicable in principle — a reader should be able to understand exactly what you did, even if they could not reproduce the study.',
-        ],
-      },
-    ],
+    lessons: methodologyChapterLessons,
   },
 
   // ── TOPIC 8 ─────────────────────────────────────────────────────────────────
