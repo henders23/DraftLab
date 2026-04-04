@@ -17,6 +17,8 @@ import { lessons as researchQuestionsLessons } from './lessons/research-question
 import { lessons as introductionChapterLessons } from './lessons/introduction-chapter';
 import { lessons as methodologyChapterLessons } from './lessons/methodology-chapter';
 import { lessons as resultsAnalysisLessons } from './lessons/results-analysis';
+import { lessons as discussionChapterLessons } from './lessons/discussion-chapter';
+import { lessons as conclusionChapterLessons } from './lessons/conclusion-chapter';
 
 export const TOPICS = [
 
@@ -107,60 +109,7 @@ export const TOPICS = [
     description: 'Interpret your findings in light of the literature — making claims, managing complexity, and articulating your contribution.',
     icon: 'MessageCircle',
     color: 'violet',
-    lessons: [
-      {
-        slug: 'returning-to-rqs',
-        title: 'Returning to Your Research Questions',
-        durationMins: 10,
-        intro: 'The discussion chapter must be anchored to the research questions you posed at the outset. Revisiting them explicitly — not just implicitly — gives your discussion structural clarity and prevents drift.',
-        extracts: [],
-        activityPrompt: 'Write one paragraph per research question using this structure: restate the question explicitly ("The first research question asked..."), then provide a direct answer based on your findings ("This thesis has shown that..."), then explain what this answer contributes beyond a simple statement of results. Use this as scaffolding — you can refine the phrasing later, but the explicit anchoring must remain visible in the final draft.',
-        keyTakeaways: [
-          'The discussion should return to each research question explicitly, not just implicitly — examiners use this as a check on whether the thesis actually answered what it set out to answer.',
-          'Restating each research question before answering it gives the discussion chapter a clear structure and makes it easy for the reader (and examiner) to follow your argument.',
-          'Each sub-question answer should build cumulatively: the answers to your sub-questions, taken together, should constitute your answer to the central research question.',
-        ],
-      },
-      {
-        slug: 'interpreting-in-light-of-lit',
-        title: 'Interpreting Findings in Light of the Literature',
-        durationMins: 12,
-        intro: 'Your findings are only meaningful in relation to what already exists in the field. The discussion is where you bring your results into conversation with the literature — confirming, challenging, extending, or complicating prior work.',
-        extracts: [],
-        activityPrompt: 'For each major finding, identify at least one source from your literature review that it confirms, extends, or challenges. Write a sentence in one of these patterns: "[Finding] is consistent with [Source]\'s argument that [X], and extends it by showing [Y]" or "[Finding] complicates [Source]\'s claim that [X] by demonstrating that [Y] under conditions [Z]." Avoid simply saying your findings "support" the literature — be specific about what, precisely, aligns or diverges and why it matters.',
-        keyTakeaways: [
-          'The discussion is where your findings and the literature meet — each finding should be interpreted in explicit relation to what the field already knows.',
-          'Confirmation of prior literature is worth noting but not your most important move; divergence, extension, qualification, and complication are intellectually richer and more memorable.',
-          '"My findings support X" without specifics is not adequate discussion — say what, precisely, your findings add to, qualify, or challenge in X.',
-        ],
-      },
-      {
-        slug: 'claims-and-qualifications',
-        title: 'Making Claims and Managing Qualifications',
-        durationMins: 10,
-        intro: 'The discussion is where you make your boldest claims — but also where you must manage them most carefully. The balance between confidence and appropriate qualification is the hallmark of strong doctoral discussion writing.',
-        extracts: [],
-        activityPrompt: 'Scan your discussion for sentences beginning with "This proves...", "This shows that...", or "Clearly...". For each, ask: does my evidence actually support a claim this strong? If not, replace with appropriately hedged language ("This suggests...", "The evidence is consistent with...", "A plausible interpretation is..."). Then check the opposite direction: are there findings you have under-claimed out of excessive caution? Strengthen those too.',
-        keyTakeaways: [
-          'Claims should be proportionate to the evidence: strong, well-designed studies can support stronger claims; studies with recognised limitations require more hedging.',
-          'Over-claiming is as problematic as under-claiming — examiners will push back on assertions that go beyond what the data can support.',
-          'Hedging vocabulary signals epistemic precision: "suggests", "indicates", "is consistent with", "appears to", "may" all distinguish different degrees of evidential support.',
-        ],
-      },
-      {
-        slug: 'articulating-contribution',
-        title: 'Articulating Your Contribution',
-        durationMins: 10,
-        intro: 'The "so what?" of your thesis must be stated explicitly, not left for the reader to infer. Articulating your contribution clearly — to knowledge, theory, methodology, or practice — is one of the most important things your discussion chapter does.',
-        extracts: [],
-        activityPrompt: 'Write three sentences that together articulate your contribution: (1) what your thesis has shown that was not known before; (2) what this means for one of the theoretical frameworks or debates you engaged with; (3) what it means for how future researchers should approach this topic. Read all three back and ask: could these sentences have been written before this thesis existed? If yes, the contribution is not yet specific enough.',
-        keyTakeaways: [
-          'The contribution to knowledge must be stated explicitly — examiners cannot be expected to infer it from the findings.',
-          'Contributions can be empirical (new data, cases, or contexts), theoretical (new framework, concept, or critique), methodological (new approach or tool), or applied (implications for practice or policy).',
-          '"This thesis contributes to knowledge by..." is a legitimate and necessary sentence in doctoral writing — intellectual modesty should not prevent you from stating clearly what you have added.',
-        ],
-      },
-    ],
+    lessons: discussionChapterLessons,
   },
 
   // ── TOPIC 10 ────────────────────────────────────────────────────────────────
@@ -170,47 +119,7 @@ export const TOPICS = [
     description: 'Close your thesis with purpose — summarising your contribution, drawing out implications, and pointing to future work.',
     icon: 'Flag',
     color: 'rose',
-    lessons: [
-      {
-        slug: 'summarising-without-repeating',
-        title: 'Summarising Without Simply Repeating',
-        durationMins: 8,
-        intro: 'A conclusion that restates the introduction is a missed opportunity. The conclusion should synthesise — showing how your findings, taken together, answer your central research question in a way that no single chapter could.',
-        extracts: [],
-        activityPrompt: 'Write the opening paragraph of your conclusion using this structure: one sentence restating your central research question; one sentence stating the overall answer your thesis has produced; one sentence articulating what this reveals about the field that was not visible before. If the paragraph reads like a repeat of your introduction, you are summarising instead of synthesising. The conclusion should feel like an arrival at a higher vantage point — not a return to the start.',
-        keyTakeaways: [
-          'A conclusion that simply repeats the introduction adds no intellectual value — it restates the problem rather than delivering the promised resolution.',
-          'Synthesis in the conclusion means showing how the parts of the thesis, taken together, produce an understanding that no individual chapter achieved alone.',
-          'The conclusion should feel like an arrival: a reader who has followed the full argument should find that the conclusion articulates something they now understand that they couldn\'t have before reading.',
-        ],
-      },
-      {
-        slug: 'implications',
-        title: 'Implications for Theory, Practice, and Policy',
-        durationMins: 10,
-        intro: 'Implications extend your findings beyond the immediate study. They answer "what does this mean for the field?" — and for some disciplines, "what should practitioners, policymakers, or future researchers do differently as a result?"',
-        extracts: [],
-        activityPrompt: 'Write one implication each for: (1) theory — what does your thesis suggest about an existing theoretical framework, concept, or debate in your field? (2) methodology — what does your approach suggest about how future researchers might study this topic? (3) practice or policy — if your discipline has applied dimensions, what should practitioners or policymakers take from your findings? Each implication should follow logically from a specific finding, not from the topic in general.',
-        keyTakeaways: [
-          'Implications answer the question "so what does this mean for anyone who wasn\'t part of this study?" — they extend findings outward.',
-          'Not all studies have direct policy implications, but all should have theoretical and methodological ones.',
-          'Implications should be grounded in specific findings, not generic statements about the importance of the topic area.',
-        ],
-      },
-      {
-        slug: 'future-research',
-        title: 'Directions for Future Research',
-        durationMins: 8,
-        intro: 'Identifying future research directions is not an admission of incompleteness — it is a mark of scholarly self-awareness. The best future directions follow logically from what your thesis found and what it couldn\'t address.',
-        extracts: [],
-        activityPrompt: 'Identify three directions for future research that follow directly from your thesis. For each, state: (1) the specific question it would address; (2) why your thesis creates the need or the opening for it (either by generating a new question, or by revealing a limitation that constrains your own conclusions). Avoid generic recommendations like "further research is needed" — name the question, the context, and the reason it matters now.',
-        keyTakeaways: [
-          'Future research directions should follow logically from your own findings and limitations — they should be questions that your thesis has generated, not arbitrary extensions of your topic.',
-          'The most compelling future directions arise directly from your limitations: "Because this study was limited to X, future work should examine Y in order to Z."',
-          'A strong future research section demonstrates that your thesis has generated new questions — this is evidence of a genuine contribution to knowledge.',
-        ],
-      },
-    ],
+    lessons: conclusionChapterLessons,
   },
 
   // ── TOPIC 11 ────────────────────────────────────────────────────────────────
