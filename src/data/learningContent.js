@@ -14,6 +14,7 @@ import { lessons as academicVoiceLessons } from './lessons/academic-voice';
 import { lessons as literatureReviewLessons } from './lessons/literature-review';
 import { lessons as paragraphStructureLessons } from './lessons/paragraph-structure';
 import { lessons as researchQuestionsLessons } from './lessons/research-questions';
+import { lessons as introductionChapterLessons } from './lessons/introduction-chapter';
 
 export const TOPICS = [
 
@@ -74,60 +75,7 @@ export const TOPICS = [
     description: 'Open your thesis with clarity and authority — establishing territory, identifying the gap, and announcing your contribution.',
     icon: 'DoorOpen',
     color: 'yellow',
-    lessons: [
-      {
-        slug: 'cars-model',
-        title: 'The CARS Model',
-        durationMins: 10,
-        intro: 'The CARS model (Create A Research Space) describes the three rhetorical moves of most academic introductions: establishing territory, establishing a niche, and occupying the niche. Recognising these moves helps you write — and evaluate — introductions across disciplines.',
-        extracts: [],
-        activityPrompt: 'Find a published journal article or book introduction in your field. Work through it paragraph by paragraph and label the CARS moves: (1) Territory — where does it establish the significance or activity of the field? (2) Niche — where does it signal a gap, problem, or unresolved question? (3) Occupying the niche — where does it announce what this piece will do? Notice whether each move is explicit (stated clearly) or implied.',
-        keyTakeaways: [
-          'The CARS model (Swales, 1990) identifies three moves found in most academic introductions: establishing territory, establishing a niche, and occupying the niche.',
-          'Move 1 establishes that the field is active and the problem is significant; Move 2 creates the intellectual space the paper will fill; Move 3 announces the contribution.',
-          'The three moves don\'t always appear in strict order and can overlap — but all three must be present for an introduction to do its rhetorical work.',
-        ],
-      },
-      {
-        slug: 'establishing-territory',
-        title: 'Establishing Your Territory',
-        durationMins: 8,
-        intro: 'The opening of your introduction must convince the reader that the field you\'re entering is significant and active. This is not background for its own sake — it\'s rhetorical groundwork for the gap you\'re about to identify.',
-        extracts: [],
-        activityPrompt: 'Draft or revise the opening paragraph of your introduction with one goal: make the reader feel they are entering an active, important field. Do not mention your thesis or your gap yet. Use present-tense statements about current debates, live questions, or recent developments. Aim for 3–5 sentences. Then ask: does this paragraph motivate the reader to keep reading, or does it read like a textbook summary?',
-        keyTakeaways: [
-          'Opening with a claim about the significance or activity of your field signals that the work matters — this is rhetorical, not decorative.',
-          'Use present tense for current debates and ongoing questions; past tense for historical developments or foundational work.',
-          'Avoid sweeping generalisations ("Since the dawn of time...") or overly broad claims — anchor the territory in the actual scholarly landscape of your field.',
-        ],
-      },
-      {
-        slug: 'scope-and-limits',
-        title: 'Scope, Limitations, and Chapter Outline',
-        durationMins: 8,
-        intro: 'Stating what your thesis does not do is as important as stating what it does. A clearly delimited scope protects you from overreach and shows the reader exactly where to expect your contribution.',
-        extracts: [],
-        activityPrompt: 'Write three sentences for your scope section: (1) the geographic, temporal, or conceptual boundaries your thesis operates within; (2) one thing explicitly excluded and a brief reason why; (3) one limitation of your approach that you acknowledge. Frame each as a deliberate choice rather than an apology — "this study focuses on X and does not address Y, because Z" reads very differently from "unfortunately, this study could not address Y."',
-        keyTakeaways: [
-          'Scope statements are protective: they prevent examiners from faulting you for not addressing something you never claimed to address.',
-          'A limitation stated honestly is a mark of methodological maturity — it shows you understand the boundaries of your own evidence.',
-          'Chapter outlines should state what each chapter argues, not just what it covers — active verbs ("Chapter 3 examines... and argues...") are more useful to the reader than passive descriptions.',
-        ],
-      },
-      {
-        slug: 'intro-across-disciplines',
-        title: 'Introduction Conventions Across Disciplines',
-        durationMins: 10,
-        intro: 'The structure of an introduction in a History thesis differs meaningfully from one in a Biology or Law thesis. Understanding how your discipline frames "the problem" shapes everything about how you open.',
-        extracts: [],
-        activityPrompt: 'Compare the introduction of a STEM thesis and a humanities or social science thesis from your university library. List every structural difference you notice: length, tense, density of citations, whether there is a separate literature review, how the contribution is stated, whether a chapter outline is included. What does this comparison reveal about what each discipline considers sufficient justification for a research question?',
-        keyTakeaways: [
-          'Laboratory science introductions often compress background, gap, and aims into 1–2 pages; humanities introductions may run to 30+ pages, incorporating the literature review.',
-          'In sciences, contributions are typically framed as aims, objectives, or hypotheses; in humanities, as arguments, interpretations, or critical interventions.',
-          'Knowing your field\'s conventions is not about conforming blindly — it\'s about understanding the baseline so you can make deliberate choices about when to depart from it.',
-        ],
-      },
-    ],
+    lessons: introductionChapterLessons,
   },
 
   // ── TOPIC 7 ─────────────────────────────────────────────────────────────────
