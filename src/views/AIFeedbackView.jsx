@@ -7,9 +7,6 @@ const MOCK_FEEDBACK = [
     label: 'Clarity',
     icon: <Zap size={14} />,
     score: 72,
-    color: 'text-yellow-400',
-    bg: 'bg-yellow-400/10',
-    border: 'border-yellow-400/20',
     suggestions: [
       'Sentence in paragraph 2 exceeds 40 words — consider splitting.',
       'Pronoun "it" on line 3 has an ambiguous referent; specify the noun.',
@@ -21,9 +18,6 @@ const MOCK_FEEDBACK = [
     label: 'Structure',
     icon: <BookOpen size={14} />,
     score: 85,
-    color: 'text-emerald-400',
-    bg: 'bg-emerald-400/10',
-    border: 'border-emerald-400/20',
     suggestions: [
       'Opening sentence effectively signals the paragraph topic.',
       'Consider adding a transitional sentence before the final claim.',
@@ -34,9 +28,6 @@ const MOCK_FEEDBACK = [
     label: 'Academic Tone',
     icon: <CheckCircle size={14} />,
     score: 90,
-    color: 'text-emerald-400',
-    bg: 'bg-emerald-400/10',
-    border: 'border-emerald-400/20',
     suggestions: [
       'Tone is consistently formal and appropriate.',
       'Good use of hedging language ("suggests", "may indicate").',
@@ -47,9 +38,6 @@ const MOCK_FEEDBACK = [
     label: 'Grammar',
     icon: <AlertCircle size={14} />,
     score: 61,
-    color: 'text-rose-400',
-    bg: 'bg-rose-400/10',
-    border: 'border-rose-400/20',
     suggestions: [
       'Subject-verb agreement issue detected in paragraph 1.',
       'Missing Oxford comma in list on line 5.',
@@ -58,9 +46,9 @@ const MOCK_FEEDBACK = [
   },
 ];
 
-function ScoreBadge({ score, color, bg }) {
+function ScoreBadge({ score }) {
   return (
-    <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${color} ${bg}`}>
+    <span className="text-xs font-semibold px-2 py-0.5 rounded-full text-zinc-300 bg-zinc-800">
       {score}/100
     </span>
   );
@@ -87,7 +75,7 @@ export default function AIFeedbackView() {
       {/* Header */}
       <div>
         <h2 className="text-3xl font-light text-white mb-1 flex items-center gap-3">
-          <Bot className="text-yellow-400" size={28} /> AI Feedback Engine
+          <Bot size={28} /> AI Feedback Engine
         </h2>
         <p className="text-zinc-400">Paste a writing excerpt and get instant, detailed feedback.</p>
       </div>
@@ -95,21 +83,21 @@ export default function AIFeedbackView() {
       {/* Input card */}
       <section className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 space-y-4">
         <label className="text-sm font-medium text-zinc-300 flex items-center gap-2">
-          <Pencil size={14} className="text-yellow-400" /> Your writing excerpt
+          <Pencil size={14} /> Your writing excerpt
         </label>
         <textarea
           value={text}
           onChange={(e) => { setText(e.target.value); setShowFeedback(false); }}
           rows={8}
           placeholder="Paste your paragraph or section here…"
-          className="w-full bg-black/60 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-200 placeholder-zinc-600 resize-none focus:outline-none focus:border-yellow-400/50 transition-colors"
+          className="w-full bg-black/60 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-200 placeholder-zinc-600 resize-none focus:outline-none focus:border-zinc-600 transition-colors"
         />
         <div className="flex items-center justify-between">
           <span className="text-xs text-zinc-600">{text.trim().split(/\s+/).filter(Boolean).length} words</span>
           <button
             onClick={handleGetFeedback}
             disabled={!text.trim() || loading}
-            className="flex items-center gap-2 px-5 py-2 bg-yellow-400 hover:bg-yellow-300 disabled:opacity-40 disabled:cursor-not-allowed text-black text-sm font-semibold rounded-xl transition-colors"
+            className="flex items-center gap-2 px-5 py-2 bg-white hover:bg-zinc-100 disabled:opacity-40 disabled:cursor-not-allowed text-black text-sm font-semibold rounded-xl transition-colors"
           >
             {loading ? (
               <>
@@ -126,17 +114,17 @@ export default function AIFeedbackView() {
       {/* Feedback panels */}
       {showFeedback && (
         <div className="space-y-4 animate-in fade-in duration-300">
-          <h3 className="text-sm font-medium text-zinc-400 uppercase tracking-wider">Feedback results</h3>
+          <h3 className="text-sm font-medium text-zinc-500 uppercase tracking-wider">Feedback results</h3>
           {MOCK_FEEDBACK.map((section) => (
             <section
               key={section.id}
-              className={`bg-zinc-900 border ${section.border} rounded-2xl p-5`}
+              className="bg-zinc-900 border border-zinc-800 rounded-2xl p-5"
             >
               <div className="flex items-center justify-between mb-3">
-                <span className={`flex items-center gap-1.5 text-sm font-medium ${section.color}`}>
+                <span className="flex items-center gap-1.5 text-sm font-medium text-white">
                   {section.icon} {section.label}
                 </span>
-                <ScoreBadge score={section.score} color={section.color} bg={section.bg} />
+                <ScoreBadge score={section.score} />
               </div>
               <ul className="space-y-2">
                 {section.suggestions.map((s, i) => (

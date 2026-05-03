@@ -8,9 +8,9 @@ export default function ActiveDrafts() {
     <section className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
       <div className="flex justify-between items-center mb-6">
         <h3 className="text-lg font-medium text-white flex items-center gap-2">
-          <FileText className="text-yellow-400" size={20} /> Active Drafts
+          <FileText size={20} /> Active Drafts
         </h3>
-        <Link to="/docs" className="text-sm text-yellow-400 hover:text-yellow-300 transition-colors">
+        <Link to="/docs" className="text-sm text-zinc-400 hover:text-white transition-colors">
           View all
         </Link>
       </div>
@@ -28,10 +28,10 @@ export default function ActiveDrafts() {
               <p className="text-xs text-zinc-500 mt-1">{draft.updatedAt} · {draft.wordCount.toLocaleString()} words</p>
             </div>
             <div className="flex items-center gap-3">
-              <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${draft.color} ${draft.bg}`}>
+              <span className="text-xs px-2.5 py-1 rounded-full font-medium text-zinc-400 bg-zinc-800">
                 {draft.status}
               </span>
-              <ArrowRight size={16} className="text-zinc-600 group-hover:text-yellow-400 transition-colors" />
+              <ArrowRight size={16} className="text-zinc-600 group-hover:text-white transition-colors" />
             </div>
           </div>
         ))}

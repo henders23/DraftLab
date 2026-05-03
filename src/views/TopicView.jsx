@@ -4,18 +4,8 @@ import { ChevronLeft, Clock, CheckCircle, Circle, PlayCircle, ArrowRight } from 
 import { getTopicBySlug } from '../data/learningContent';
 import { useProgress } from '../context/ProgressContext';
 
-const TOPIC_COLORS = {
-  yellow:  { accent: 'text-yellow-400',  bg: 'bg-yellow-400/10',  border: 'border-yellow-400/20',  bar: 'bg-yellow-400'  },
-  emerald: { accent: 'text-emerald-400', bg: 'bg-emerald-400/10', border: 'border-emerald-400/20', bar: 'bg-emerald-400' },
-  blue:    { accent: 'text-blue-400',    bg: 'bg-blue-400/10',    border: 'border-blue-400/20',    bar: 'bg-blue-400'    },
-  rose:    { accent: 'text-rose-400',    bg: 'bg-rose-400/10',    border: 'border-rose-400/20',    bar: 'bg-rose-400'    },
-  violet:  { accent: 'text-violet-400',  bg: 'bg-violet-400/10',  border: 'border-violet-400/20',  bar: 'bg-violet-400'  },
-  orange:  { accent: 'text-orange-400',  bg: 'bg-orange-400/10',  border: 'border-orange-400/20',  bar: 'bg-orange-400'  },
-};
-
 function getLessonStatus(lessons, lessonIndex, topicSlug, isLessonComplete) {
   if (isLessonComplete(topicSlug, lessons[lessonIndex].slug)) return 'complete';
-  // First incomplete lesson after a run of completed ones = "in_progress"
   const allPriorComplete = lessons.slice(0, lessonIndex).every((l) =>
     isLessonComplete(topicSlug, l.slug)
   );
@@ -33,7 +23,7 @@ export default function TopicView() {
     return (
       <div className="max-w-3xl mx-auto text-center py-24">
         <p className="text-zinc-400 mb-4">Topic not found.</p>
-        <Link to="/learning" className="text-yellow-400 hover:text-yellow-300 text-sm">
+        <Link to="/learning" className="text-white hover:text-zinc-300 text-sm">
           ← Back to all topics
         </Link>
       </div>
@@ -42,7 +32,6 @@ export default function TopicView() {
 
   const progress = topicProgress[topic.slug] ?? { completed: 0, total: topic.lessons.length };
   const pct = progress.total > 0 ? Math.round((progress.completed / progress.total) * 100) : 0;
-  const colors = TOPIC_COLORS[topic.color] ?? TOPIC_COLORS.yellow;
 
   return (
     <div className="max-w-3xl mx-auto space-y-8 animate-in fade-in duration-500">
@@ -50,7 +39,7 @@ export default function TopicView() {
       {/* Breadcrumb */}
       <Link
         to="/learning"
-        className="inline-flex items-center gap-1.5 text-sm text-zinc-500 hover:text-yellow-400 transition-colors"
+        className="inline-flex items-center gap-1.5 text-sm text-zinc-500 hover:text-white transition-colors"
       >
         <ChevronLeft size={14} /> All Topics
       </Link>
@@ -62,7 +51,7 @@ export default function TopicView() {
             <h2 className="text-2xl font-light text-white mb-1">{topic.title}</h2>
             <p className="text-zinc-400 text-sm">{topic.description}</p>
           </div>
-          <div className={`shrink-0 text-sm font-medium px-3 py-1.5 rounded-full ${colors.bg} ${colors.accent} ${colors.border} border`}>
+          <div className="shrink-0 text-sm font-medium px-3 py-1.5 rounded-full bg-white/10 text-white border border-white/20">
             {progress.completed}/{progress.total} lessons
           </div>
         </div>
@@ -70,7 +59,7 @@ export default function TopicView() {
         {/* Progress bar */}
         <div className="w-full bg-zinc-800 rounded-full h-1.5">
           <div
-            className={`h-1.5 rounded-full transition-all duration-500 ${colors.bar}`}
+            className="h-1.5 rounded-full transition-all duration-500 bg-white"
             style={{ width: `${pct}%` }}
           />
         </div>
@@ -93,9 +82,9 @@ export default function TopicView() {
             >
               {/* Status icon */}
               <div className="shrink-0">
-                {status === 'complete' && <CheckCircle size={20} className="text-emerald-400" />}
-                {status === 'in_progress' && <PlayCircle size={20} className={colors.accent} />}
-                {status === 'not_started' && <Circle size={20} className="text-zinc-700" />}
+                {status === 'complete'    && <CheckCircle size={20} className="text-white" />}
+                {status === 'in_progress' && <PlayCircle  size={20} className="text-white" />}
+                {status === 'not_started' && <Circle      size={20} className="text-zinc-700" />}
               </div>
 
               {/* Lesson info */}
@@ -107,12 +96,8 @@ export default function TopicView() {
                 </p>
                 <p className="text-xs text-zinc-600 mt-0.5 flex items-center gap-1">
                   <Clock size={10} /> {lesson.durationMins} min
-                  {status === 'complete' && (
-                    <span className="ml-2 text-emerald-500">· Complete</span>
-                  )}
-                  {status === 'in_progress' && (
-                    <span className={`ml-2 ${colors.accent}`}>· Continue</span>
-                  )}
+                  {status === 'complete'    && <span className="ml-2 text-zinc-500">· Complete</span>}
+                  {status === 'in_progress' && <span className="ml-2 text-zinc-300">· Continue</span>}
                 </p>
               </div>
 
@@ -124,7 +109,7 @@ export default function TopicView() {
                   status === 'complete'
                     ? 'bg-zinc-800 hover:bg-zinc-700 text-zinc-400'
                     : status === 'in_progress'
-                    ? `${colors.bg} ${colors.accent} hover:opacity-80`
+                    ? 'bg-white/10 text-white hover:bg-white/20'
                     : 'bg-zinc-800 hover:bg-zinc-700 text-white'
                 }`}
               >
