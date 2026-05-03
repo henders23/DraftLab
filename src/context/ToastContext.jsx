@@ -30,7 +30,7 @@ export function ToastProvider({ children }) {
             key={t.id}
             className="flex items-center gap-3 bg-zinc-900 border border-zinc-700 text-white text-sm px-4 py-3 rounded-xl shadow-lg pointer-events-auto animate-in slide-in-from-bottom-4 fade-in duration-300"
           >
-            <CheckCircle size={15} className="text-yellow-400 shrink-0" />
+            <CheckCircle size={15} className="text-white shrink-0" />
             <span>{t.message}</span>
             <button onClick={() => dismiss(t.id)} className="ml-2 text-zinc-500 hover:text-white transition-colors">
               <X size={13} />

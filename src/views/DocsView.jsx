@@ -16,11 +16,11 @@ export default function DocsView() {
       <div className="flex items-start justify-between flex-wrap gap-4">
         <div>
           <h2 className="text-3xl font-light text-white mb-1 flex items-center gap-3">
-            <FileText className="text-zinc-300" size={28} /> My Documents
+            <FileText size={28} /> My Documents
           </h2>
           <p className="text-zinc-400">{DRAFTS.length} drafts · all your writing in one place.</p>
         </div>
-        <button className="flex items-center gap-2 px-4 py-2 bg-yellow-400 hover:bg-yellow-300 text-black text-sm font-semibold rounded-xl transition-colors shrink-0">
+        <button className="flex items-center gap-2 px-4 py-2 bg-white hover:bg-zinc-100 text-black text-sm font-semibold rounded-xl transition-colors shrink-0">
           <Plus size={16} /> New Draft
         </button>
       </div>
@@ -45,7 +45,7 @@ export default function DocsView() {
           <div className="text-center py-16">
             <FileText size={36} className="text-zinc-700 mx-auto mb-3" />
             <p className="text-zinc-400 text-sm">No drafts yet. Start your first one.</p>
-            <button className="mt-4 flex items-center gap-2 px-4 py-2 bg-yellow-400 hover:bg-yellow-300 text-black text-sm font-semibold rounded-xl transition-colors mx-auto">
+            <button className="mt-4 flex items-center gap-2 px-4 py-2 bg-white hover:bg-zinc-100 text-black text-sm font-semibold rounded-xl transition-colors mx-auto">
               <Plus size={16} /> New Draft
             </button>
           </div>
@@ -71,7 +71,7 @@ export default function DocsView() {
                 </div>
 
                 <div className="flex items-center gap-3 shrink-0 ml-4">
-                  <span className={`hidden sm:inline text-xs px-2.5 py-1 rounded-full font-medium ${draft.color} ${draft.bg}`}>
+                  <span className="hidden sm:inline text-xs px-2.5 py-1 rounded-full font-medium text-zinc-400 bg-zinc-800">
                     {draft.status}
                   </span>
                   <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -81,11 +81,11 @@ export default function DocsView() {
                     <button onClick={() => toast(`Share link copied for "${draft.title}"!`)} className="p-1.5 rounded-lg hover:bg-zinc-800 text-zinc-500 hover:text-white transition-colors" title="Share">
                       <Share2 size={13} />
                     </button>
-                    <button onClick={() => toast(`"${draft.title}" moved to trash.`)} className="p-1.5 rounded-lg hover:bg-zinc-800 text-zinc-500 hover:text-rose-400 transition-colors" title="Delete">
+                    <button onClick={() => toast(`"${draft.title}" moved to trash.`)} className="p-1.5 rounded-lg hover:bg-zinc-800 text-zinc-500 hover:text-white transition-colors" title="Delete">
                       <Trash2 size={13} />
                     </button>
                   </div>
-                  <ArrowRight size={15} className="text-zinc-600 group-hover:text-yellow-400 transition-colors" />
+                  <ArrowRight size={15} className="text-zinc-600 group-hover:text-white transition-colors" />
                 </div>
               </div>
             ))}

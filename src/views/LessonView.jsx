@@ -19,7 +19,7 @@ export default function LessonView() {
     return (
       <div className="max-w-3xl mx-auto text-center py-24">
         <p className="text-zinc-400 mb-4">Lesson not found.</p>
-        <Link to="/learning" className="text-yellow-400 hover:text-yellow-300 text-sm">
+        <Link to="/learning" className="text-white hover:text-zinc-300 text-sm">
           ← Back to all topics
         </Link>
       </div>
@@ -47,9 +47,9 @@ export default function LessonView() {
 
       {/* Breadcrumbs */}
       <div className="flex items-center gap-2 text-xs text-zinc-500">
-        <Link to="/learning" className="hover:text-yellow-400 transition-colors">All Topics</Link>
+        <Link to="/learning" className="hover:text-white transition-colors">All Topics</Link>
         <span>/</span>
-        <Link to={`/learning/${topicSlug}`} className="hover:text-yellow-400 transition-colors">{topic.title}</Link>
+        <Link to={`/learning/${topicSlug}`} className="hover:text-white transition-colors">{topic.title}</Link>
         <span>/</span>
         <span className="text-zinc-300">{lesson.title}</span>
       </div>
@@ -61,7 +61,7 @@ export default function LessonView() {
             <Clock size={11} /> {lesson.durationMins} min
           </span>
           {isComplete && (
-            <span className="flex items-center gap-1 text-xs text-emerald-400">
+            <span className="flex items-center gap-1 text-xs text-zinc-300">
               <CheckCircle size={11} /> Complete
             </span>
           )}
@@ -87,8 +87,8 @@ export default function LessonView() {
 
       {/* Activity prompt */}
       {lesson.activityPrompt && (
-        <div className="bg-yellow-400/5 border border-yellow-400/20 rounded-2xl p-6">
-          <p className="text-xs font-semibold text-yellow-400 mb-2 flex items-center gap-1.5">
+        <div className="bg-zinc-900 border border-zinc-700 rounded-2xl p-6">
+          <p className="text-xs font-semibold text-white mb-2 flex items-center gap-1.5">
             <Lightbulb size={13} /> Activity
           </p>
           <p className="text-sm text-zinc-300 leading-relaxed">{lesson.activityPrompt}</p>
@@ -102,7 +102,7 @@ export default function LessonView() {
           <ul className="space-y-2">
             {lesson.keyTakeaways.map((point, i) => (
               <li key={i} className="flex gap-2.5 text-sm text-zinc-300">
-                <span className="mt-1.5 w-1 h-1 rounded-full bg-yellow-400 shrink-0" />
+                <span className="mt-1.5 w-1 h-1 rounded-full bg-white shrink-0" />
                 {point}
               </li>
             ))}
@@ -114,14 +114,14 @@ export default function LessonView() {
       <div className="flex items-center justify-between gap-4 pb-8">
         <Link
           to={`/learning/${topicSlug}`}
-          className="flex items-center gap-1.5 text-sm text-zinc-500 hover:text-yellow-400 transition-colors"
+          className="flex items-center gap-1.5 text-sm text-zinc-500 hover:text-white transition-colors"
         >
           <ChevronLeft size={14} /> Back to topic
         </Link>
 
         {isComplete ? (
           <div className="flex items-center gap-3">
-            <span className="flex items-center gap-1.5 text-sm text-emerald-400">
+            <span className="flex items-center gap-1.5 text-sm text-zinc-300">
               <CheckCircle size={15} /> Lesson complete
             </span>
             {nextLesson && (
@@ -136,7 +136,7 @@ export default function LessonView() {
         ) : (
           <button
             onClick={handleMarkComplete}
-            className="flex items-center gap-2 px-5 py-2 bg-yellow-400 hover:bg-yellow-300 text-black text-sm font-semibold rounded-xl transition-colors"
+            className="flex items-center gap-2 px-5 py-2 bg-white hover:bg-zinc-100 text-black text-sm font-semibold rounded-xl transition-colors"
           >
             <CheckCircle size={15} />
             {nextLesson ? 'Mark complete & continue' : 'Mark complete'}

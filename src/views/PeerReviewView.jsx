@@ -31,13 +31,6 @@ const MY_REVIEWS = [
   { id: 2, title: 'Conclusion Draft – Oluwaseun A.', status: 'In Progress', credits: 10, date: 'Today' },
 ];
 
-const AVATAR_COLORS = [
-  'bg-yellow-400/20 text-yellow-400',
-  'bg-emerald-400/20 text-emerald-400',
-  'bg-violet-400/20 text-violet-400',
-  'bg-rose-400/20 text-rose-400',
-];
-
 export default function PeerReviewView() {
   const toast = useToast();
   return (
@@ -47,12 +40,12 @@ export default function PeerReviewView() {
       <div className="flex items-start justify-between">
         <div>
           <h2 className="text-3xl font-light text-white mb-1 flex items-center gap-3">
-            <Users className="text-emerald-400" size={28} /> Peer Review Hub
+            <Users size={28} /> Peer Review Hub
           </h2>
           <p className="text-zinc-400">Help fellow academics and earn credits for your own reviews.</p>
         </div>
         <div className="hidden md:flex items-center gap-2 bg-zinc-900 border border-zinc-800 rounded-full px-4 py-2 shrink-0">
-          <Coins size={14} className="text-yellow-400" />
+          <Coins size={14} className="text-zinc-400" />
           <span className="text-sm font-medium text-white">32 credits</span>
         </div>
       </div>
@@ -60,15 +53,15 @@ export default function PeerReviewView() {
       {/* Open requests */}
       <section className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
         <h3 className="text-lg font-medium text-white mb-5 flex items-center gap-2">
-          <FileText className="text-yellow-400" size={18} /> Open Requests
+          <FileText size={18} /> Open Requests
         </h3>
         <div className="space-y-3">
-          {ALL_REQUESTS.map((req, i) => (
+          {ALL_REQUESTS.map((req) => (
             <div
               key={req.id}
               className="flex items-start gap-4 p-4 bg-black/50 border border-zinc-800/50 rounded-xl hover:border-zinc-700 transition-colors"
             >
-              <div className={`w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${AVATAR_COLORS[i % AVATAR_COLORS.length]}`}>
+              <div className="w-9 h-9 rounded-full bg-zinc-800 text-zinc-300 flex items-center justify-center text-xs font-bold shrink-0">
                 {req.initials}
               </div>
               <div className="flex-1 min-w-0">
@@ -79,12 +72,12 @@ export default function PeerReviewView() {
                 <p className="text-xs text-zinc-500 mt-0.5">{req.author}</p>
                 <p className="text-sm text-zinc-400 mt-2 leading-relaxed">{req.message}</p>
                 <div className="flex items-center justify-between mt-3 flex-wrap gap-2">
-                  <span className="flex items-center gap-1 text-xs text-yellow-400 bg-yellow-400/10 px-2.5 py-1 rounded-full">
+                  <span className="flex items-center gap-1 text-xs text-zinc-300 bg-zinc-800 px-2.5 py-1 rounded-full border border-zinc-700">
                     <Coins size={11} /> +{req.credits} credits
                   </span>
                   <button
                     onClick={() => toast(`Review accepted — +${req.credits} credits incoming!`)}
-                    className="text-xs font-medium px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg transition-colors"
+                    className="text-xs font-medium px-3 py-1.5 bg-white hover:bg-zinc-100 text-black rounded-lg transition-colors"
                   >
                     Accept Review
                   </button>
@@ -98,7 +91,7 @@ export default function PeerReviewView() {
       {/* My reviews */}
       <section className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
         <h3 className="text-lg font-medium text-white mb-5 flex items-center gap-2">
-          <CheckCircle className="text-emerald-400" size={18} /> My Reviews
+          <CheckCircle size={18} /> My Reviews
         </h3>
         <div className="space-y-3">
           {MY_REVIEWS.map((rev) => (
@@ -110,10 +103,14 @@ export default function PeerReviewView() {
                 </p>
               </div>
               <div className="flex items-center gap-3 shrink-0">
-                <span className="flex items-center gap-1 text-xs text-yellow-400 bg-yellow-400/10 px-2 py-0.5 rounded-full">
+                <span className="flex items-center gap-1 text-xs text-zinc-300 bg-zinc-800 px-2 py-0.5 rounded-full border border-zinc-700">
                   <Coins size={10} /> {rev.credits}
                 </span>
-                <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${rev.status === 'Completed' ? 'text-emerald-400 bg-emerald-400/10' : 'text-zinc-400 bg-zinc-400/10'}`}>
+                <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${
+                  rev.status === 'Completed'
+                    ? 'text-white bg-white/10 border border-white/20'
+                    : 'text-zinc-400 bg-zinc-800'
+                }`}>
                   {rev.status}
                 </span>
               </div>

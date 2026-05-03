@@ -7,13 +7,11 @@ import { useProgress } from '../../context/ProgressContext';
 export default function LearningZone() {
   const { topicProgress, isLessonComplete } = useProgress();
 
-  // Find the first topic with at least one completed lesson but not fully done
   const inProgressTopic = TOPICS.find((t) => {
     const p = topicProgress[t.slug];
     return p && p.completed > 0 && p.completed < p.total;
   });
 
-  // First incomplete lesson in that topic
   const nextLesson = inProgressTopic?.lessons.find(
     (l) => !isLessonComplete(inProgressTopic.slug, l.slug)
   );
@@ -28,9 +26,9 @@ export default function LearningZone() {
     <section className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
       <div className="flex justify-between items-center mb-5">
         <h3 className="text-lg font-medium text-white flex items-center gap-2">
-          <BookOpen className="text-yellow-400" size={20} /> Learning
+          <BookOpen size={20} /> Learning
         </h3>
-        <Link to="/learning" className="text-sm text-yellow-400 hover:text-yellow-300 transition-colors">
+        <Link to="/learning" className="text-sm text-zinc-400 hover:text-white transition-colors">
           All topics
         </Link>
       </div>
@@ -41,10 +39,10 @@ export default function LearningZone() {
           <h4 className="text-sm font-medium text-white mb-3">{nextLesson.title}</h4>
           <div className="flex justify-between text-xs text-zinc-400 mb-2">
             <span>{progress.completed} of {progress.total} lessons</span>
-            <span className="text-yellow-400">{pct}%</span>
+            <span className="text-zinc-300">{pct}%</span>
           </div>
           <div className="w-full bg-zinc-800 rounded-full h-1.5 mb-4">
-            <div className="bg-yellow-400 h-1.5 rounded-full transition-all" style={{ width: `${pct}%` }} />
+            <div className="bg-white h-1.5 rounded-full transition-all" style={{ width: `${pct}%` }} />
           </div>
           <Link
             to={continueLink}

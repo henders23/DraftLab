@@ -3,11 +3,6 @@ import { Calendar, Clock, Users, Tag } from 'lucide-react';
 import { EVENTS } from '../data/events';
 import { useToast } from '../context/ToastContext';
 
-const TYPE_COLORS = {
-  Workshop: 'text-yellow-400 bg-yellow-400/10 border-yellow-400/20',
-  'Co-working': 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20',
-};
-
 export default function EventsView() {
   const toast = useToast();
   const todayCount = EVENTS.filter((e) => e.isToday).length;
@@ -19,14 +14,14 @@ export default function EventsView() {
       <div className="flex items-start justify-between flex-wrap gap-4">
         <div>
           <h2 className="text-3xl font-light text-white mb-1 flex items-center gap-3">
-            <Calendar className="text-rose-400" size={28} /> Events & Workshops
+            <Calendar size={28} /> Events & Workshops
           </h2>
           <p className="text-zinc-400">Browse upcoming sessions and join live writing communities.</p>
         </div>
         {todayCount > 0 && (
-          <div className="bg-rose-400/10 border border-rose-400/20 rounded-full px-4 py-2 flex items-center gap-2 shrink-0">
-            <span className="w-2 h-2 rounded-full bg-rose-400 animate-pulse" />
-            <span className="text-sm text-rose-400 font-medium">{todayCount} live today</span>
+          <div className="bg-white/10 border border-white/20 rounded-full px-4 py-2 flex items-center gap-2 shrink-0">
+            <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+            <span className="text-sm text-white font-medium">{todayCount} live today</span>
           </div>
         )}
       </div>
@@ -36,11 +31,11 @@ export default function EventsView() {
         {EVENTS.map((event) => (
           <div
             key={event.id}
-            className={`bg-zinc-900 border rounded-2xl p-5 hover:border-zinc-600 transition-colors ${event.isToday ? 'border-yellow-400/30' : 'border-zinc-800'}`}
+            className={`bg-zinc-900 border rounded-2xl p-5 hover:border-zinc-600 transition-colors ${event.isToday ? 'border-zinc-600' : 'border-zinc-800'}`}
           >
             <div className="flex items-start gap-4">
               {/* Date badge */}
-              <div className={`shrink-0 w-14 h-14 rounded-xl flex flex-col items-center justify-center text-center ${event.isToday ? 'bg-yellow-400 text-black' : 'bg-zinc-800 text-zinc-300'}`}>
+              <div className={`shrink-0 w-14 h-14 rounded-xl flex flex-col items-center justify-center text-center ${event.isToday ? 'bg-white text-black' : 'bg-zinc-800 text-zinc-300'}`}>
                 <span className="text-xs font-semibold uppercase leading-none">
                   {event.isToday ? 'Today' : event.date.split(' ')[0]}
                 </span>
@@ -53,14 +48,14 @@ export default function EventsView() {
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-2 flex-wrap">
                   <div>
-                    <span className={`inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full border mb-1.5 ${TYPE_COLORS[event.type] ?? 'text-zinc-400 bg-zinc-400/10 border-zinc-700'}`}>
+                    <span className="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full border mb-1.5 text-zinc-300 bg-zinc-800 border-zinc-700">
                       {event.type}
                     </span>
                     <h3 className="text-base font-medium text-white">{event.title}</h3>
                   </div>
                   <button
                     onClick={() => toast(event.isToday ? `Joining "${event.title}" — link opening…` : `Registered for "${event.title}"!`)}
-                    className="text-xs font-semibold px-4 py-1.5 bg-yellow-400 hover:bg-yellow-300 text-black rounded-xl transition-colors shrink-0"
+                    className="text-xs font-semibold px-4 py-1.5 bg-white hover:bg-zinc-100 text-black rounded-xl transition-colors shrink-0"
                   >
                     {event.isToday ? 'Join Now' : 'Register'}
                   </button>
