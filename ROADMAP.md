@@ -35,8 +35,9 @@ Real backend so multi-user and social features become possible.
 
 ## Phase 1 — Make it SOCIAL (retention engine)
 
-- [ ] Rich profiles: country, native language, discipline, university, stage, timezone
-- [ ] Peer matching by discipline / language / timezone
+- [x] Rich profiles: country, native language, discipline, university, stage, timezone
+- [x] Onboarding prompt to complete your profile
+- [x] Community directory with matching by discipline / language / country
 - [ ] Real peer-review loop: request → accept → review → rating (credits system)
 - [ ] Accountability partners / writing buddies
 - [ ] Live co-working rooms with presence ("who's writing now")

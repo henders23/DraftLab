@@ -12,6 +12,8 @@ import AuthView from './views/AuthView';
 import DashboardView from './views/DashboardView';
 import EventsView from './views/EventsView';
 import LearningView from './views/LearningView';
+import ProfileView from './views/ProfileView';
+import CommunityView from './views/CommunityView';
 import PlaceholderView from './views/PlaceholderView';
 
 function FullScreenLoader() {
@@ -81,8 +83,10 @@ export default function App() {
               <Route path="/dashboard" element={<DashboardView />} />
               <Route path="/ai" element={<PlaceholderView />} />
               <Route path="/peer" element={<PlaceholderView />} />
+              <Route path="/community" element={<CommunityView />} />
               <Route path="/learning" element={<LearningView />} />
               <Route path="/events" element={<EventsView />} />
+              <Route path="/profile" element={<ProfileView />} />
               <Route path="/docs" element={<PlaceholderView />} />
             </Route>
 

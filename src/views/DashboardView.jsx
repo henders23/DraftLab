@@ -3,6 +3,7 @@ import ActiveDrafts from '../components/dashboard/ActiveDrafts';
 import LearningZone from '../components/dashboard/LearningZone';
 import UpcomingEvents from '../components/dashboard/UpcomingEvents';
 import PeerRequests from '../components/dashboard/PeerRequests';
+import CompleteProfileBanner from '../components/dashboard/CompleteProfileBanner';
 import { useAuth } from '../context/AuthContext';
 
 function greeting() {
@@ -40,6 +41,8 @@ export default function DashboardView() {
           </div>
         )}
       </div>
+
+      <CompleteProfileBanner />
 
       {/* 2-column grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
