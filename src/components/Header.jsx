@@ -40,7 +40,7 @@ export default function Header() {
           <span className="absolute top-1 right-1 w-2 h-2 bg-rose-500 rounded-full border border-black" />
         </button>
         <Link
-          to="/docs"
+          to="/docs?new=1"
           className="bg-yellow-400 hover:bg-yellow-300 text-black text-sm font-semibold px-4 py-2 rounded-full flex items-center gap-2 transition-colors shadow-lg shadow-yellow-400/20"
         >
           <Plus size={16} /> New Draft
