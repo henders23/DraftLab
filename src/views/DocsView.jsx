@@ -369,7 +369,7 @@ export default function DocsView() {
       setShowModal(true);
       setSearchParams({}, { replace: true });
     }
-  }, []);
+  }, [searchParams]);
 
   function handleCreate({ title, type }) {
     const doc = {

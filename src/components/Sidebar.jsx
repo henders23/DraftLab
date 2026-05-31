@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   BookOpen, Users, Calendar, Bot,
-  LayoutDashboard, FileText, Settings, PenLine,
+  LayoutDashboard, FileText, Settings, Zap,
 } from 'lucide-react';
 import NavItem from './NavItem';
 
@@ -20,8 +20,8 @@ export default function Sidebar() {
       {/* Brand */}
       <div className="p-6">
         <h1 className="font-semibold text-lg flex items-center gap-2 text-white tracking-tight">
-          <PenLine size={18} className="text-white" />
-          Scholarly Voice
+          <Zap size={18} className="text-yellow-400" />
+          DraftLab
         </h1>
         <p className="text-zinc-600 text-xs mt-1">Academic Writing Workspace</p>
       </div>
