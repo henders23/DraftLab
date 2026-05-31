@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import DashboardView from './views/DashboardView';
 import EventsView from './views/EventsView';
+import LearningView from './views/LearningView';
 import PlaceholderView from './views/PlaceholderView';
 
 export default function App() {
@@ -20,7 +21,7 @@ export default function App() {
               <Route path="/" element={<DashboardView />} />
               <Route path="/ai" element={<PlaceholderView />} />
               <Route path="/peer" element={<PlaceholderView />} />
-              <Route path="/learning" element={<PlaceholderView />} />
+              <Route path="/learning" element={<LearningView />} />
               <Route path="/events" element={<EventsView />} />
               <Route path="/docs" element={<PlaceholderView />} />
             </Routes>
