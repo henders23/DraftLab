@@ -1,7 +1,11 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
+import ScrollToTop from './components/ScrollToTop';
+import { ProgressProvider } from './context/ProgressContext';
+import { ToastProvider } from './context/ToastContext';
+import LandingView from './views/LandingView';
 import DashboardView from './views/DashboardView';
 import EventsView from './views/EventsView';
 import LearningView from './views/LearningView';

@@ -21,10 +21,10 @@ export default function LearningZone() {
     <section className="bg-zinc-900 border border-zinc-800 rounded-2xl p-6">
       <div className="flex justify-between items-center mb-5">
         <h3 className="text-lg font-medium text-white flex items-center gap-2">
-          <BookOpen className="text-yellow-400" size={20} /> Learning
+          <BookOpen size={20} /> Learning
         </h3>
-        <Link to="/learning" className="text-sm text-yellow-400 hover:text-yellow-300 transition-colors">
-          All modules
+        <Link to="/learning" className="text-sm text-zinc-400 hover:text-white transition-colors">
+          All topics
         </Link>
       </div>
 
