@@ -37,7 +37,7 @@ export default function LandingView() {
             <span className="font-semibold text-lg tracking-tight">Scholarly Voice</span>
           </div>
           <Link
-            to="/dashboard"
+            to="/login"
             className="flex items-center gap-2 px-4 py-2 bg-white text-black text-sm font-semibold rounded-full hover:bg-zinc-100 transition-colors"
           >
             Join the Community <ArrowRight size={14} />
@@ -59,13 +59,13 @@ export default function LandingView() {
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
-            to="/dashboard"
+            to="/login"
             className="flex items-center gap-2 px-7 py-3.5 bg-white text-black text-sm font-semibold rounded-full hover:bg-zinc-100 transition-colors"
           >
             Join the Community <ArrowRight size={15} />
           </Link>
           <Link
-            to="/learning"
+            to="/login"
             className="flex items-center gap-2 px-7 py-3.5 border border-zinc-700 text-white text-sm font-medium rounded-full hover:bg-zinc-900 transition-colors"
           >
             <BookOpen size={15} /> Explore the curriculum
@@ -136,7 +136,7 @@ export default function LandingView() {
           Join thousands of PhD students who are writing more clearly, arguing more precisely, and submitting with confidence.
         </p>
         <Link
-          to="/dashboard"
+          to="/login"
           className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black text-sm font-semibold rounded-full hover:bg-zinc-100 transition-colors"
         >
           Join the Community <ArrowRight size={15} />

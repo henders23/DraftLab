@@ -1,9 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   BookOpen, Users, Calendar, Bot,
-  LayoutDashboard, FileText, Settings, PenLine,
+  LayoutDashboard, FileText, LogOut, PenLine,
 } from 'lucide-react';
 import NavItem from './NavItem';
+import { useAuth } from '../context/AuthContext';
 
 const NAV_ITEMS = [
   { to: '/dashboard', icon: <LayoutDashboard size={20} />, label: 'Dashboard' },
@@ -14,7 +16,27 @@ const NAV_ITEMS = [
   { to: '/docs',      icon: <FileText size={20} />,        label: 'My Documents' },
 ];
 
+function initialsFrom(name, email) {
+  const source = (name || email || '').trim();
+  if (!source) return '?';
+  const parts = source.split(/\s+/);
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
+
 export default function Sidebar() {
+  const { user, profile, signOut } = useAuth();
+  const navigate = useNavigate();
+
+  const displayName = profile?.full_name || user?.email?.split('@')[0] || 'Writer';
+  const initials = initialsFrom(profile?.full_name, user?.email);
+  const streak = profile?.current_streak ?? 0;
+
+  async function handleSignOut() {
+    await signOut();
+    navigate('/login');
+  }
+
   return (
     <aside className="w-64 bg-zinc-950 border-r border-zinc-800 flex flex-col shrink-0">
       {/* Brand */}
@@ -38,15 +60,20 @@ export default function Sidebar() {
         <div className="bg-zinc-900 rounded-xl p-4 border border-zinc-800">
           <div className="flex items-center gap-3 mb-3">
             <div className="w-9 h-9 rounded-full border border-zinc-700 bg-zinc-800 flex items-center justify-center text-sm font-semibold text-zinc-300 shrink-0">
-              ER
+              {initials}
             </div>
-            <div>
-              <p className="text-sm font-medium text-white">Elena R.</p>
-              <p className="text-xs text-zinc-500">12-day streak</p>
+            <div className="min-w-0">
+              <p className="text-sm font-medium text-white truncate">{displayName}</p>
+              <p className="text-xs text-zinc-500">
+                {streak > 0 ? `${streak}-day streak` : 'Start your streak today'}
+              </p>
             </div>
           </div>
-          <button className="w-full py-2 text-sm text-zinc-400 bg-zinc-800 hover:bg-zinc-700 rounded-lg transition-colors flex items-center justify-center gap-2">
-            <Settings size={15} /> Settings
+          <button
+            onClick={handleSignOut}
+            className="w-full py-2 text-sm text-zinc-400 bg-zinc-800 hover:bg-zinc-700 rounded-lg transition-colors flex items-center justify-center gap-2"
+          >
+            <LogOut size={15} /> Sign out
           </button>
         </div>
       </div>

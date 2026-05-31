@@ -1,5 +1,14 @@
-import React, { createContext, useContext, useState, useMemo, useCallback } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useMemo,
+  useCallback,
+  useEffect,
+} from 'react';
 import { TOPICS } from '../data/learningContent';
+import { supabase } from '../lib/supabase';
+import { useAuth } from './AuthContext';
 
 const STORAGE_KEY = 'draftlab_learning_progress';
 
@@ -17,8 +26,72 @@ function loadFromStorage() {
   }
 }
 
+// Turn DB rows into the nested { [topicSlug]: { [lessonSlug]: true } } shape the UI uses.
+function rowsToMap(rows) {
+  const map = {};
+  for (const row of rows) {
+    map[row.topic_slug] = { ...map[row.topic_slug], [row.lesson_slug]: true };
+  }
+  return map;
+}
+
 export function ProgressProvider({ children }) {
-  const [completedMap, setCompletedMap] = useState(loadFromStorage);
+  const { user } = useAuth();
+  const [completedMap, setCompletedMap] = useState({});
+
+  // Load progress from Supabase, migrating any legacy localStorage progress on first run.
+  useEffect(() => {
+    if (!user) return;
+    let active = true;
+
+    (async () => {
+      const { data, error } = await supabase
+        .from('learning_progress')
+        .select('topic_slug, lesson_slug')
+        .eq('user_id', user.id);
+
+      if (error) {
+        console.error('Failed to load learning progress:', error.message);
+        return;
+      }
+
+      const legacy = loadFromStorage();
+      const hasLegacy = Object.keys(legacy).length > 0;
+
+      // One-time migration: push localStorage progress up if the account has none yet.
+      if (data.length === 0 && hasLegacy) {
+        const rows = [];
+        for (const [topicSlug, lessons] of Object.entries(legacy)) {
+          for (const [lessonSlug, done] of Object.entries(lessons || {})) {
+            if (done) {
+              rows.push({
+                user_id: user.id,
+                topic_slug: topicSlug,
+                lesson_slug: lessonSlug,
+              });
+            }
+          }
+        }
+        if (rows.length > 0) {
+          const { error: upErr } = await supabase
+            .from('learning_progress')
+            .upsert(rows, { onConflict: 'user_id,topic_slug,lesson_slug' });
+          if (!upErr) {
+            localStorage.removeItem(STORAGE_KEY);
+            if (active) setCompletedMap(legacy);
+            return;
+          }
+          console.error('Progress migration failed:', upErr.message);
+        }
+      }
+
+      if (active) setCompletedMap(rowsToMap(data));
+    })();
+
+    return () => {
+      active = false;
+    };
+  }, [user]);
 
   // { [topicSlug]: { completed: n, total: n } }
   const topicProgress = useMemo(() => {
@@ -37,16 +110,27 @@ export function ProgressProvider({ children }) {
     [completedMap]
   );
 
-  const markLessonComplete = useCallback((topicSlug, lessonSlug) => {
-    setCompletedMap((prev) => {
-      const updated = {
+  const markLessonComplete = useCallback(
+    (topicSlug, lessonSlug) => {
+      // Optimistic local update.
+      setCompletedMap((prev) => ({
         ...prev,
         [topicSlug]: { ...prev[topicSlug], [lessonSlug]: true },
-      };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
-      return updated;
-    });
-  }, []);
+      }));
+
+      if (!user) return;
+      supabase
+        .from('learning_progress')
+        .upsert(
+          { user_id: user.id, topic_slug: topicSlug, lesson_slug: lessonSlug },
+          { onConflict: 'user_id,topic_slug,lesson_slug' }
+        )
+        .then(({ error }) => {
+          if (error) console.error('Failed to save progress:', error.message);
+        });
+    },
+    [user]
+  );
 
   return (
     <ProgressContext.Provider value={{ topicProgress, isLessonComplete, markLessonComplete }}>
