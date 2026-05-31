@@ -14,6 +14,7 @@ import EventsView from './views/EventsView';
 import LearningView from './views/LearningView';
 import ProfileView from './views/ProfileView';
 import CommunityView from './views/CommunityView';
+import PeerReviewView from './views/PeerReviewView';
 import PlaceholderView from './views/PlaceholderView';
 
 function FullScreenLoader() {
@@ -82,7 +83,7 @@ export default function App() {
             <Route element={<ProtectedLayout />}>
               <Route path="/dashboard" element={<DashboardView />} />
               <Route path="/ai" element={<PlaceholderView />} />
-              <Route path="/peer" element={<PlaceholderView />} />
+              <Route path="/peer" element={<PeerReviewView />} />
               <Route path="/community" element={<CommunityView />} />
               <Route path="/learning" element={<LearningView />} />
               <Route path="/events" element={<EventsView />} />
