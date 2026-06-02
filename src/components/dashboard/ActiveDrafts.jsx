@@ -55,7 +55,7 @@ export default function ActiveDrafts() {
           {recent.map((doc) => (
             <Link
               key={doc.id}
-              to="/docs"
+              to={`/docs?open=${doc.id}`}
               className="flex items-center justify-between p-4 bg-black/50 border border-zinc-800/50 rounded-xl hover:border-zinc-700 transition-colors cursor-pointer group"
             >
               <div className="min-w-0">

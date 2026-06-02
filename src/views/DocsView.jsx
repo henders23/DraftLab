@@ -363,10 +363,16 @@ export default function DocsView() {
   const [activeDocId, setActiveDocId] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
-  // Header "New Draft" button passes ?new=1
+  // ?new=1 → open modal; ?open=<id> → jump straight to editor
   useEffect(() => {
-    if (searchParams.get('new') === '1') {
+    const newParam = searchParams.get('new');
+    const openParam = searchParams.get('open');
+    if (newParam === '1') {
       setShowModal(true);
+      setSearchParams({}, { replace: true });
+    } else if (openParam) {
+      setActiveDocId(openParam);
+      setView('editor');
       setSearchParams({}, { replace: true });
     }
   }, [searchParams]);
