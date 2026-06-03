@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import CommonsTopNav from './components/CommonsTopNav';
 import LandingView from './views/LandingView';
 import HomeView from './views/HomeView';
+import DraftsView from './views/DraftsView';
 import EventsView from './views/EventsView';
 import FeedbackView from './views/FeedbackView';
 import MentorView from './views/MentorView';
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/landing" element={<LandingView />} />
         <Route path="/pricing" element={<PricingView />} />
         <Route path="/home" element={<AppShell><HomeView /></AppShell>} />
+        <Route path="/drafts" element={<AppShell><DraftsView /></AppShell>} />
         <Route path="/events" element={<AppShell><EventsView /></AppShell>} />
         <Route path="/feedback" element={<AppShell><FeedbackView /></AppShell>} />
         <Route path="/mentor" element={<AppShell><MentorView /></AppShell>} />

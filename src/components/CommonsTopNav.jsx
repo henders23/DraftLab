@@ -56,6 +56,7 @@ export default function CommonsTopNav() {
 
   const NAV = [
     ['Home',      '/home'],
+    ['Drafts',    '/drafts'],
     ['Feedback',  '/feedback'],
     ['Events',    '/events'],
     ['Mentor',    '/mentor'],
