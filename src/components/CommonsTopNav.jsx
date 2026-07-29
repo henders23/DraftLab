@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Icon, Avatar, Btn, Wordmark } from './CommonsUI';
 import { NOTIFICATIONS } from '../data/commons-data';
+import { useAuth } from '../context/AuthContext';
+import { initialsOf, variantOf } from '../lib/supabase';
 
 function NotifPanel({ onClose, navigate }) {
   return (
@@ -52,6 +54,8 @@ export default function CommonsTopNav() {
   const navigate = useNavigate();
   const location = useLocation();
   const [notifOpen, setNotifOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { user, profile, signOut } = useAuth();
 
   const NAV = [
     ['Home',      '/home'],
@@ -89,7 +93,29 @@ export default function CommonsTopNav() {
               <Icon name="bell" />
               {NOTIFICATIONS.length > 0 && <span className="bell-badge">{NOTIFICATIONS.length}</span>}
             </button>
-            <Avatar initials="" variant={0} size={36} />
+            <div style={{ position: 'relative' }}>
+              <button onClick={() => setMenuOpen((o) => !o)} style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }} aria-label="Account">
+                <Avatar initials={initialsOf(profile?.full_name)} variant={variantOf(user?.id)} size={36} />
+              </button>
+              {menuOpen && (
+                <>
+                  <div onClick={() => setMenuOpen(false)} style={{ position: 'fixed', inset: 0, zIndex: 55 }} />
+                  <div className="card" style={{ position: 'absolute', right: 0, top: 44, zIndex: 56, minWidth: 200, padding: 8, boxShadow: 'var(--shadow-md)' }}>
+                    <div style={{ padding: '8px 12px' }}>
+                      <div className="serif" style={{ fontSize: 15, fontWeight: 600 }}>{profile?.full_name || 'Member'}</div>
+                      <div className="small muted">{profile?.discipline || 'No discipline set'}</div>
+                    </div>
+                    <hr className="rule" style={{ margin: '4px 0' }} />
+                    <button
+                      className="btn btn-ghost btn-sm btn-block"
+                      onClick={async () => { setMenuOpen(false); await signOut(); navigate('/landing'); }}
+                    >
+                      Sign out
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>

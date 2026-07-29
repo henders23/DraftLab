@@ -1,30 +1,6 @@
-// Community data. These arrays are empty until real member data is wired in
-// (Supabase project: DraftLab). Views render honest empty states in the meantime.
-
-export const PEOPLE = [];
-
-export const EVENTS = [
-  { id: 'ev-method',  mon: 'AUG', day: '06', dow: 'Thu', time: '14:00', len: '60 min',
-    title: 'Structuring a methodology chapter', type: 'Workshop',
-    host: 'PGR Commons team', going: 0, circle: 0, cover: 'workshop photo' },
-  { id: 'ev-sprint',  mon: 'AUG', day: '08', dow: 'Sat', time: '10:00', len: '90 min',
-    title: 'Silent writing sprint', type: 'Writing sprint',
-    host: 'Peer-led', going: 0, circle: 0, cover: 'people writing' },
-  { id: 'ev-stance',  mon: 'AUG', day: '12', dow: 'Wed', time: '16:00', len: '45 min',
-    title: 'Hedging & stance in academic English', type: 'Language',
-    host: 'PGR Commons team', going: 0, circle: 0, cover: 'seminar photo' },
-  { id: 'ev-cowrite', mon: 'AUG', day: '13', dow: 'Thu', time: '09:00', len: 'Drop-in',
-    title: 'Coffee & co-writing', type: 'Drop-in',
-    host: 'Open to all', going: 0, circle: 0, cover: 'cafe co-writing' },
-  { id: 'ev-revise',  mon: 'AUG', day: '15', dow: 'Sat', time: '13:00', len: '50 min',
-    title: 'From feedback to a revision plan', type: 'Talk',
-    host: 'PGR Commons team', going: 0, circle: 0, cover: 'talk photo' },
-  { id: 'ev-present', mon: 'AUG', day: '18', dow: 'Tue', time: '15:00', len: '75 min',
-    title: 'Presenting research with confidence', type: 'Workshop',
-    host: 'PGR Commons team', going: 0, circle: 0, cover: 'presentation photo' },
-];
-
-export const FEED = [];
+// Static app data. Events, posts and feedback now live in Supabase
+// (project: DraftLab); notifications are empty until a real notification
+// pipeline exists.
 
 export const NOTIFICATIONS = [];
 

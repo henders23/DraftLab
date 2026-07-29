@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Icon, Btn, Tag, Wordmark, DateBox, Cover } from '../components/CommonsUI';
-import { EVENTS, PLANS } from '../data/commons-data';
+import { PLANS } from '../data/commons-data';
+import { supabase, eventLabels } from '../lib/supabase';
 
 function MiniEvent({ ev }) {
   const navigate = useNavigate();
+  const l = eventLabels(ev.starts_at);
   return (
     <button
       onClick={() => navigate('/events')}
@@ -12,15 +14,15 @@ function MiniEvent({ ev }) {
       style={{ overflow: 'hidden', textAlign: 'left', cursor: 'pointer', display: 'flex', flexDirection: 'column', width: '100%' }}
     >
       <div style={{ position: 'relative' }}>
-        <Cover label={ev.cover} height={132} />
+        <Cover label={ev.cover_label} height={132} />
         <div style={{ position: 'absolute', top: 10, left: 10 }}><Tag variant="ink">{ev.type}</Tag></div>
       </div>
       <div className="card-pad" style={{ display: 'flex', gap: 13, alignItems: 'flex-start' }}>
-        <DateBox mon={ev.mon} day={ev.day} />
+        <DateBox mon={l.mon} day={l.day} />
         <div className="grow">
           <h4 className="serif" style={{ fontSize: 16.5, fontWeight: 600, lineHeight: 1.15, margin: 0 }}>{ev.title}</h4>
-          <div className="mono small muted" style={{ margin: '5px 0 9px' }}>{ev.dow} {ev.time}</div>
-          <span className="small muted">{ev.host}</span>
+          <div className="mono small muted" style={{ margin: '5px 0 9px' }}>{l.dow} {l.time}</div>
+          <span className="small muted">{ev.host_label}</span>
         </div>
       </div>
     </button>
@@ -29,6 +31,17 @@ function MiniEvent({ ev }) {
 
 export default function LandingView() {
   const navigate = useNavigate();
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    supabase
+      .from('events')
+      .select('*')
+      .gte('starts_at', new Date().toISOString())
+      .order('starts_at')
+      .limit(3)
+      .then(({ data }) => setEvents(data ?? []));
+  }, []);
 
   return (
     <div className="screen">
@@ -44,8 +57,8 @@ export default function LandingView() {
               ))}
             </nav>
             <div className="row gap-10 center">
-              <Btn variant="ghost-dark" size="sm" onClick={() => navigate('/home')}>Sign in</Btn>
-              <Btn variant="primary" size="sm" onClick={() => navigate('/home')}>Join</Btn>
+              <Btn variant="ghost-dark" size="sm" onClick={() => navigate('/auth?mode=signin')}>Sign in</Btn>
+              <Btn variant="primary" size="sm" onClick={() => navigate('/auth')}>Join</Btn>
             </div>
           </div>
         </div>
@@ -62,7 +75,7 @@ export default function LandingView() {
               and first languages.
             </p>
             <div className="row gap-14 wrap-x" style={{ marginTop: 34 }}>
-              <Btn variant="primary" size="lg" onClick={() => navigate('/home')}>Join PGR Commons</Btn>
+              <Btn variant="primary" size="lg" onClick={() => navigate('/auth')}>Join PGR Commons</Btn>
               <Btn variant="ghost-dark" size="lg" iconR="arrow" onClick={() => navigate('/events')}>Browse this week's events</Btn>
             </div>
             <div className="row gap-14 center" style={{ marginTop: 38 }}>
@@ -135,9 +148,13 @@ export default function LandingView() {
             </div>
             <Btn variant="ghost" iconR="arrow" onClick={() => navigate('/events')}>See all events</Btn>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }}>
-            {EVENTS.slice(0, 3).map((ev) => <MiniEvent key={ev.id} ev={ev} />)}
-          </div>
+          {events.length > 0 ? (
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }}>
+              {events.map((ev) => <MiniEvent key={ev.id} ev={ev} />)}
+            </div>
+          ) : (
+            <p className="small muted">The next round of events is being scheduled — join to hear first.</p>
+          )}
         </div>
       </section>
 
@@ -203,12 +220,10 @@ export default function LandingView() {
             Find your people. <span className="italic" style={{ color: 'var(--sand)' }}>Keep going.</span>
           </h2>
           <div className="row gap-10 center" style={{ justifyContent: 'center', marginTop: 36, flexWrap: 'wrap' }}>
-            <input placeholder="you@university.edu" aria-label="email"
-              style={{ minHeight: 52, minWidth: 280, borderRadius: 999, border: '1.5px solid var(--dark-line)', background: 'var(--dark-2)', color: 'var(--dark-paper)', padding: '0 22px', fontFamily: 'var(--sans)', fontSize: 15, outline: 'none' }} />
-            <Btn variant="primary" size="lg" onClick={() => navigate('/home')}>Join PGR Commons</Btn>
+            <Btn variant="primary" size="lg" onClick={() => navigate('/auth')}>Join PGR Commons</Btn>
           </div>
           <p className="small" style={{ color: 'var(--dark-muted)', marginTop: 18 }}>
-            Already a member? <a onClick={() => navigate('/home')} style={{ color: 'var(--sand)', cursor: 'pointer' }}>Sign in</a>
+            Already a member? <a onClick={() => navigate('/auth?mode=signin')} style={{ color: 'var(--sand)', cursor: 'pointer' }}>Sign in</a>
           </p>
         </div>
       </section>
