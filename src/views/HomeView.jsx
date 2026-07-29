@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Icon, Avatar, AvatarStack, Btn, Tag } from '../components/CommonsUI';
-import { PEOPLE, EVENTS, FEED } from '../data/commons-data';
+import { Icon, Avatar, Btn, Tag } from '../components/CommonsUI';
+import { EVENTS, FEED } from '../data/commons-data';
 
 function DateBox({ mon, day }) {
   return (
@@ -27,7 +27,7 @@ function CompactEvent({ ev }) {
         </div>
         <div className="serif" style={{ fontSize: 15.5, fontWeight: 600, lineHeight: 1.15, margin: '3px 0 6px' }}>{ev.title}</div>
         <div className="between">
-          <AvatarStack people={PEOPLE.slice(0, 3)} size={20} extra={`+${ev.going}`} />
+          <span className="small muted">{ev.host}</span>
           <span className="tag brick">join</span>
         </div>
       </div>
@@ -85,6 +85,15 @@ function Post({ p }) {
   );
 }
 
+function todayLabel() {
+  return new Date().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
+}
+
+function greeting() {
+  const h = new Date().getHours();
+  return h < 12 ? 'Good morning.' : h < 18 ? 'Good afternoon.' : 'Good evening.';
+}
+
 export default function HomeView() {
   const navigate = useNavigate();
   const [feedFilter, setFeedFilter] = useState('Your circle');
@@ -93,11 +102,10 @@ export default function HomeView() {
     <div className="screen wrap" style={{ paddingTop: 38, paddingBottom: 90 }}>
       {/* greeting */}
       <header style={{ marginBottom: 30 }}>
-        <p className="eyebrow">Tuesday · 3 June</p>
-        <h1 className="display h-lg" style={{ marginTop: 12 }}>Good morning, Mei.</h1>
-        <p className="lead" style={{ marginTop: 10, display: 'flex', alignItems: 'center', gap: 9 }}>
-          <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--brick)', display: 'inline-block', boxShadow: '0 0 0 4px var(--brick-soft)' }} />
-          Three people in your circle are writing right now.
+        <p className="eyebrow">{todayLabel()}</p>
+        <h1 className="display h-lg" style={{ marginTop: 12 }}>{greeting()}</h1>
+        <p className="lead" style={{ marginTop: 10 }}>
+          Welcome to the Commons — your writing community starts here.
         </p>
       </header>
 
@@ -107,40 +115,31 @@ export default function HomeView() {
         <aside className="col gap-20" style={{ position: 'sticky', top: 90 }}>
           <div className="card card-sand card-pad">
             <p className="eyebrow">Your circle</p>
-            <h3 className="serif h-sm" style={{ marginTop: 8 }}>Education — Year 2</h3>
-            <div style={{ margin: '14px 0 12px' }}>
-              <AvatarStack people={PEOPLE.slice(0, 5)} size={34} extra="+7" />
-            </div>
-            <div className="small" style={{ color: 'var(--sand-deep)', display: 'flex', alignItems: 'center', gap: 7, marginBottom: 14 }}>
-              <Icon name="calendar" sm /> Next meet · Wed 16:00
-            </div>
-            <Btn variant="primary" block size="sm" onClick={() => navigate('/events')}>Open circle</Btn>
+            <h3 className="serif h-sm" style={{ marginTop: 8 }}>Not matched yet</h3>
+            <p className="small" style={{ color: 'var(--sand-deep)', margin: '10px 0 14px' }}>
+              You'll be placed in a small circle of researchers at your stage, in your discipline.
+            </p>
+            <Btn variant="primary" block size="sm" onClick={() => navigate('/events')}>Find your circle</Btn>
           </div>
 
           <div className="card card-pad">
-            <div className="between" style={{ marginBottom: 8 }}>
-              <p className="eyebrow">Your discipline</p>
-              <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--sand-deep)', boxShadow: '0 0 0 3px var(--sand-soft)' }} />
-            </div>
-            <h3 className="serif h-sm">Education &amp; Social Sciences</h3>
-            <p className="small muted" style={{ margin: '8px 0 12px' }}>2,400 researchers · 184 online now</p>
-            <Btn variant="ghost" block size="sm" icon="globe" onClick={() => navigate('/feedback')}>Browse discipline</Btn>
+            <p className="eyebrow" style={{ marginBottom: 8 }}>Your discipline</p>
+            <h3 className="serif h-sm">Choose a community</h3>
+            <p className="small muted" style={{ margin: '8px 0 12px' }}>Join a disciplinary community to see relevant drafts and events.</p>
+            <Btn variant="ghost" block size="sm" icon="globe" onClick={() => navigate('/feedback')}>Browse disciplines</Btn>
           </div>
 
           <div className="card card-pad">
             <p className="eyebrow">Your draft</p>
-            <h3 className="serif h-sm" style={{ marginTop: 8 }}>Chapter 3 — Methodology</h3>
-            <div style={{ height: 7, borderRadius: 99, background: 'var(--surface-3)', margin: '14px 0 8px', overflow: 'hidden' }}>
-              <div style={{ width: '64%', height: '100%', background: 'var(--brick)', borderRadius: 99 }} />
-            </div>
-            <div className="small muted">64% of your weekly goal · edited 2 days ago</div>
-            <Btn variant="ghost" block size="sm" icon="write" style={{ marginTop: 14 }}>Resume writing</Btn>
+            <h3 className="serif h-sm" style={{ marginTop: 8 }}>Nothing here yet</h3>
+            <p className="small muted" style={{ margin: '8px 0 0' }}>Start a draft and track your weekly writing goal.</p>
+            <Btn variant="ghost" block size="sm" icon="write" style={{ marginTop: 14 }}>Start writing</Btn>
           </div>
 
           <div className="card card-pad">
             <p className="eyebrow" style={{ marginBottom: 14 }}>Your week</p>
             <div className="col gap-14">
-              {[['Writing time', '4h 20m'], ['Events joined', '2'], ['Feedback given', '3']].map(([k, v]) => (
+              {[['Writing time', '0h'], ['Events joined', '0'], ['Feedback given', '0']].map(([k, v]) => (
                 <div key={k} className="between">
                   <span className="small muted">{k}</span>
                   <span className="serif" style={{ fontSize: 19, fontWeight: 600 }}>{v}</span>
@@ -154,7 +153,7 @@ export default function HomeView() {
               <Icon name="spark" sm style={{ color: 'var(--brick)' }} />
               <span className="mono" style={{ fontSize: 10.5, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--brick-deep)' }}>On the free plan</span>
             </div>
-            <p className="small" style={{ color: 'var(--ink)', margin: '0 0 12px' }}>You've used 2 of 2 events this month. Go unlimited for £39 — first week free.</p>
+            <p className="small" style={{ color: 'var(--ink)', margin: '0 0 12px' }}>The free plan includes 2 events a month. Go unlimited for £39 — first week free.</p>
             <Btn variant="primary" block size="sm" onClick={() => navigate('/pricing')}>See plans</Btn>
           </div>
         </aside>
@@ -162,7 +161,7 @@ export default function HomeView() {
         {/* CENTER: feed */}
         <main>
           <div className="card card-pad" style={{ display: 'flex', gap: 13, alignItems: 'center', marginBottom: 22 }}>
-            <Avatar initials="MZ" variant={0} size={40} />
+            <Avatar initials="" variant={0} size={40} />
             <button className="searchpill grow" style={{ justifyContent: 'flex-start', minWidth: 0 }}>
               Share a draft, a win, or a question…
             </button>
@@ -178,9 +177,19 @@ export default function HomeView() {
             </div>
           </div>
 
-          <div className="card" style={{ overflow: 'hidden' }}>
-            {FEED.map((p, i) => <Post key={i} p={p} />)}
-          </div>
+          {FEED.length > 0 ? (
+            <div className="card" style={{ overflow: 'hidden' }}>
+              {FEED.map((p, i) => <Post key={i} p={p} />)}
+            </div>
+          ) : (
+            <div className="card card-pad" style={{ textAlign: 'center', padding: '56px 32px' }}>
+              <Icon name="chat" style={{ width: 30, height: 30, color: 'var(--sand-deep)' }} />
+              <h3 className="serif h-sm" style={{ margin: '14px 0 6px' }}>The Commons is quiet</h3>
+              <p className="small muted" style={{ maxWidth: '38ch', margin: '0 auto' }}>
+                No posts yet. Share a draft, a milestone, or a question — someone else is probably wondering the same thing.
+              </p>
+            </div>
+          )}
         </main>
 
         {/* RIGHT: this week */}
@@ -194,12 +203,9 @@ export default function HomeView() {
           </div>
 
           <div className="card card-pad">
-            <p className="eyebrow" style={{ marginBottom: 12 }}>New in your circle</p>
-            <div className="row gap-10" style={{ alignItems: 'center' }}>
-              <AvatarStack people={PEOPLE.slice(3, 7)} size={32} extra="+2" />
-            </div>
-            <p className="small muted" style={{ marginTop: 12 }}>Two researchers from Public Health joined this week. Say hello?</p>
-            <Btn variant="ghost" block size="sm" icon="users" style={{ marginTop: 12 }}>Welcome them</Btn>
+            <p className="eyebrow" style={{ marginBottom: 12 }}>Grow the Commons</p>
+            <p className="small muted" style={{ margin: 0 }}>Know other postgraduate researchers? Invite them — circles work best with a few familiar faces.</p>
+            <Btn variant="ghost" block size="sm" icon="users" style={{ marginTop: 12 }}>Invite a colleague</Btn>
           </div>
         </aside>
       </div>

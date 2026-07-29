@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Icon, Avatar, AvatarStack, Btn, Tag, Chip, DateBox, Cover } from '../components/CommonsUI';
-import { PEOPLE, EVENTS } from '../data/commons-data';
+import { Icon, Avatar, Btn, Tag, Chip, DateBox, Cover } from '../components/CommonsUI';
+import { EVENTS } from '../data/commons-data';
 
 function EventCard({ ev }) {
   return (
@@ -28,7 +28,7 @@ function EventCard({ ev }) {
         <hr className="rule" />
         <div className="between" style={{ marginTop: 2 }}>
           <div className="col" style={{ gap: 5 }}>
-            <AvatarStack people={PEOPLE.slice(0, 3)} size={24} extra={`+${ev.going}`} />
+            <span className="small muted">{ev.going > 0 ? `${ev.going} going` : 'Be the first to join'}</span>
             {ev.circle > 0 && <span className="mono" style={{ fontSize: 10.5, color: 'var(--brick)' }}>{ev.circle} from your circle</span>}
           </div>
           <Btn variant="primary" size="sm" iconR="arrow">Join</Btn>
@@ -67,22 +67,18 @@ export default function EventsView() {
           </div>
           <h2 className="display h-md">{featured.title}</h2>
           <div className="row gap-20 wrap-x" style={{ margin: '20px 0 22px', color: 'var(--ink-soft)' }}>
-            <span className="row gap-6 center small"><Icon name="calendar" sm /> {featured.dow} 6 Jun · {featured.time}</span>
+            <span className="row gap-6 center small"><Icon name="calendar" sm /> {featured.dow} {parseInt(featured.day, 10)} {featured.mon.charAt(0) + featured.mon.slice(1).toLowerCase()} · {featured.time}</span>
             <span className="row gap-6 center small"><Icon name="clock" sm /> {featured.len}</span>
             <span className="row gap-6 center small"><Icon name="globe" sm /> Online</span>
           </div>
           <div className="row gap-10 center" style={{ marginBottom: 24 }}>
-            <Avatar initials="AO" variant={1} size={36} />
+            <Avatar initials={featured.host.split(' ').map((w) => w[0]).slice(0, 2).join('')} variant={1} size={36} />
             <div className="small">
               <div style={{ fontWeight: 600 }}>{featured.host}</div>
-              <div className="muted">Sociology · hosts monthly</div>
             </div>
           </div>
           <div className="between">
-            <div className="col gap-6">
-              <AvatarStack people={PEOPLE} size={28} max={5} extra={`+${featured.going}`} />
-              <span className="mono" style={{ fontSize: 10.5, color: 'var(--brick)' }}>{featured.circle} from your circle going</span>
-            </div>
+            <span className="small muted">{featured.going > 0 ? `${featured.going} going` : 'Places open — be the first to join'}</span>
             <div className="row gap-10">
               <Btn variant="ghost" icon="calendar">Save</Btn>
               <Btn variant="primary" iconR="arrow">Join event</Btn>

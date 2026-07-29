@@ -7,33 +7,10 @@ import { PEER_REQUESTS } from '../data/modules';
 import { useToast } from '../context/ToastContext';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
-const EXTRA_REQUESTS = [
-  {
-    id: 3,
-    author: 'Priya S.',
-    initials: 'PS',
-    title: 'Discussion Chapter – Findings',
-    message: 'Looking for feedback on how well I link my results back to the literature.',
-    wordCount: 1200,
-    credits: 15,
-  },
-  {
-    id: 4,
-    author: 'Marcus T.',
-    initials: 'MT',
-    title: 'Abstract Revision',
-    message: 'Is my abstract concise and does it cover all the key elements?',
-    wordCount: 320,
-    credits: 6,
-  },
-];
+// Requests and reviews come from real members; empty until backend data is wired in.
+const SEED_REQUESTS = [...PEER_REQUESTS];
 
-const SEED_REQUESTS = [...PEER_REQUESTS, ...EXTRA_REQUESTS];
-
-const SEED_REVIEWS = [
-  { id: 'r1', title: 'Theoretical Framework', author: 'Keiko H.', credits: 12, date: '2d ago', status: 'Completed' },
-  { id: 'r2', title: 'Conclusion Draft', author: 'Oluwaseun A.', credits: 10, date: 'Today', status: 'In Progress' },
-];
+const SEED_REVIEWS = [];
 
 // ─── Request Feedback Modal ───────────────────────────────────────────────────
 

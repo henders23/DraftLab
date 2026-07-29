@@ -39,6 +39,7 @@ function MentorProfile({ m }) {
 }
 
 function SessionTimeline() {
+  if (SESSIONS.length === 0) return null;
   return (
     <div className="card card-pad">
       <div className="between" style={{ marginBottom: 18 }}>
@@ -90,6 +91,24 @@ export default function MentorView() {
 
   const activeDate = SLOTS[dateIdx];
   const isPremium = true; // demo: always premium
+
+  if (!MENTOR) {
+    return (
+      <div className="screen wrap" style={{ paddingTop: 70, paddingBottom: 90, maxWidth: 760, textAlign: 'center' }}>
+        <span className="prem-ribbon"><Icon name="spark" sm /> Premium</span>
+        <h1 className="display h-xl" style={{ margin: '22px auto 0' }}>1-to-1 mentoring</h1>
+        <p className="lead" style={{ margin: '18px auto 0', maxWidth: '46ch' }}>
+          A fortnightly 45-minute session with a mentor from your discipline, plus expert feedback
+          on your writing. Once you join Premium, we'll match you with a mentor and your booking
+          calendar will appear here.
+        </p>
+        <div className="row gap-14 center" style={{ justifyContent: 'center', marginTop: 32 }}>
+          <Btn variant="primary" size="lg" onClick={() => navigate('/pricing')}>See Premium · £89/mo</Btn>
+          <Btn variant="ghost" size="lg" onClick={() => navigate('/pricing')}>Start free week</Btn>
+        </div>
+      </div>
+    );
+  }
 
   if (!isPremium) {
     return (

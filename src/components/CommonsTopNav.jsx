@@ -1,45 +1,44 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Icon, Avatar, AvatarStack, Btn, Wordmark } from './CommonsUI';
-import { NOTIFICATIONS, PEOPLE } from '../data/commons-data';
+import { Icon, Avatar, Btn, Wordmark } from './CommonsUI';
+import { NOTIFICATIONS } from '../data/commons-data';
 
 function NotifPanel({ onClose, navigate }) {
-  const groups = [
-    { key: 'circle',     label: 'Education — Year 2' },
-    { key: 'discipline', label: 'Education & Social Sciences' },
-  ];
   return (
     <>
       <div onClick={onClose} style={{ position: 'fixed', inset: 0, zIndex: 55 }} />
       <div className="notif-panel">
         <div className="between" style={{ padding: '16px 18px', borderBottom: '1.5px solid var(--line)' }}>
           <h3 className="serif" style={{ fontSize: 17, fontWeight: 600, margin: 0 }}>Notifications</h3>
-          <span className="small" style={{ color: 'var(--brick)', fontWeight: 600, cursor: 'pointer' }} onClick={onClose}>Mark all read</span>
+          {NOTIFICATIONS.length > 0 && (
+            <span className="small" style={{ color: 'var(--brick)', fontWeight: 600, cursor: 'pointer' }} onClick={onClose}>Mark all read</span>
+          )}
         </div>
         <div className="notif-scroll">
-          {groups.map((g) => (
-            <div key={g.key}>
-              <div className="notif-group-label">
-                <span className={`srcchip ${g.key}`}><span className="dot" />{g.key === 'circle' ? 'Your circle' : 'Discipline'}</span>
-                <span className="mono small muted" style={{ fontSize: 10.5 }}>{g.label}</span>
-              </div>
-              {NOTIFICATIONS.filter((n) => n.src === g.key).map((n, i) => (
-                <div className="notif-row" key={i}>
-                  <Avatar initials={n.i} variant={n.v} size={36} />
-                  <div className="grow">
-                    <div className="small" style={{ color: 'var(--ink)', lineHeight: 1.4 }}>
-                      {n.who && <strong>{n.who} </strong>}{n.action}
-                    </div>
-                    <div className="mono small muted" style={{ fontSize: 10.5, marginTop: 3 }}>{n.time} ago</div>
+          {NOTIFICATIONS.length > 0 ? (
+            NOTIFICATIONS.map((n, i) => (
+              <div className="notif-row" key={i}>
+                <Avatar initials={n.i} variant={n.v} size={36} />
+                <div className="grow">
+                  <div className="small" style={{ color: 'var(--ink)', lineHeight: 1.4 }}>
+                    {n.who && <strong>{n.who} </strong>}{n.action}
                   </div>
-                  <button className="btn btn-ghost btn-sm" onClick={() => {
-                    onClose();
-                    navigate(/workshop|talk|meet/i.test(n.action) ? '/events' : '/feedback');
-                  }}>{n.act}</button>
+                  <div className="mono small muted" style={{ fontSize: 10.5, marginTop: 3 }}>{n.time} ago</div>
                 </div>
-              ))}
+                <button className="btn btn-ghost btn-sm" onClick={() => {
+                  onClose();
+                  navigate(/workshop|talk|meet/i.test(n.action) ? '/events' : '/feedback');
+                }}>{n.act}</button>
+              </div>
+            ))
+          ) : (
+            <div style={{ padding: '40px 24px', textAlign: 'center' }}>
+              <Icon name="bell" style={{ width: 26, height: 26, color: 'var(--sand-deep)' }} />
+              <p className="small muted" style={{ margin: '12px 0 0' }}>
+                You're all caught up. Activity from your circle and discipline will appear here.
+              </p>
             </div>
-          ))}
+          )}
         </div>
         <div style={{ padding: '12px 18px', borderTop: '1.5px solid var(--line)', textAlign: 'center' }}>
           <span className="small muted">You're notified about your circle and discipline only.</span>
@@ -88,9 +87,9 @@ export default function CommonsTopNav() {
             </button>
             <button className="bell-btn" onClick={() => setNotifOpen((o) => !o)} aria-label="Notifications">
               <Icon name="bell" />
-              <span className="bell-badge">{NOTIFICATIONS.length}</span>
+              {NOTIFICATIONS.length > 0 && <span className="bell-badge">{NOTIFICATIONS.length}</span>}
             </button>
-            <Avatar initials="MZ" variant={0} size={36} />
+            <Avatar initials="" variant={0} size={36} />
           </div>
         </div>
       </div>

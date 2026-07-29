@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Icon, Avatar, AvatarStack, Btn, Tag, Wordmark, DateBox, Cover } from '../components/CommonsUI';
-import { PEOPLE, EVENTS, PLANS } from '../data/commons-data';
+import { Icon, Btn, Tag, Wordmark, DateBox, Cover } from '../components/CommonsUI';
+import { EVENTS, PLANS } from '../data/commons-data';
 
 function MiniEvent({ ev }) {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ function MiniEvent({ ev }) {
         <div className="grow">
           <h4 className="serif" style={{ fontSize: 16.5, fontWeight: 600, lineHeight: 1.15, margin: 0 }}>{ev.title}</h4>
           <div className="mono small muted" style={{ margin: '5px 0 9px' }}>{ev.dow} {ev.time}</div>
-          <AvatarStack people={PEOPLE.slice(0, 3)} size={22} extra={`+${ev.going}`} />
+          <span className="small muted">{ev.host}</span>
         </div>
       </div>
     </button>
@@ -66,8 +66,7 @@ export default function LandingView() {
               <Btn variant="ghost-dark" size="lg" iconR="arrow" onClick={() => navigate('/events')}>Browse this week's events</Btn>
             </div>
             <div className="row gap-14 center" style={{ marginTop: 38 }}>
-              <AvatarStack people={PEOPLE} size={36} max={5} extra="800+" />
-              <span className="small" style={{ color: 'var(--dark-muted)' }}>researchers · 30 programmes · 40 countries</span>
+              <span className="small" style={{ color: 'var(--dark-muted)' }}>Built for researchers across disciplines, time zones and first languages.</span>
             </div>
           </div>
 
@@ -75,7 +74,7 @@ export default function LandingView() {
             <div className="card" style={{ position: 'absolute', top: 8, right: 0, width: 290, overflow: 'hidden', transform: 'rotate(2deg)', boxShadow: 'var(--shadow-lg)' }}>
               <Cover label="people writing" height={134} />
               <div className="card-pad" style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
-                <DateBox mon="JUN" day="08" />
+                <DateBox mon="AUG" day="08" />
                 <div className="grow">
                   <div className="mono small muted">Sat 10:00 · Sprint</div>
                   <div className="serif" style={{ fontWeight: 600, fontSize: 15.5, lineHeight: 1.1 }}>Silent writing sprint</div>
@@ -84,8 +83,8 @@ export default function LandingView() {
             </div>
             <div className="card card-sand card-pad" style={{ position: 'absolute', bottom: 36, left: 0, width: 280, transform: 'rotate(-2.5deg)', boxShadow: 'var(--shadow-lg)' }}>
               <div className="row gap-10 center" style={{ marginBottom: 10 }}>
-                <Avatar initials="SD" variant={2} size={32} />
-                <div className="small"><strong>Sofia</strong> <span className="muted">gave feedback</span></div>
+                <Icon name="write" sm style={{ color: 'var(--brick)' }} />
+                <div className="small"><strong>Peer feedback</strong> <span className="muted">· structured & kind</span></div>
               </div>
               <p className="serif italic" style={{ fontSize: 17, lineHeight: 1.35, margin: 0, color: 'var(--ink)' }}>
                 "Your contribution is strong — just move it earlier so the reader meets it sooner."
@@ -93,8 +92,7 @@ export default function LandingView() {
             </div>
             <div className="card" style={{ position: 'absolute', top: 188, right: 26, padding: '10px 16px', display: 'flex', alignItems: 'center', gap: 10, transform: 'rotate(1.5deg)', boxShadow: 'var(--shadow-md)' }}>
               <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--brick)', boxShadow: '0 0 0 4px var(--brick-soft)' }} />
-              <AvatarStack people={PEOPLE.slice(2, 5)} size={24} />
-              <span className="small" style={{ fontWeight: 600 }}>12 writing now</span>
+              <span className="small" style={{ fontWeight: 600 }}>Writing rooms open daily</span>
             </div>
           </div>
         </div>
@@ -148,18 +146,13 @@ export default function LandingView() {
         <div>
           <Icon name="spark" style={{ width: 34, height: 34, color: 'var(--brick)' }} />
           <blockquote className="display h-md italic" style={{ margin: '20px 0 0', fontWeight: 400, lineHeight: 1.25 }}>
-            "I spent my first year thinking everyone else had it figured out. The Commons is where I found out they didn't either — and we got through it together."
+            Doctoral writing is lonely by default. The Commons exists to make it communal — the same
+            page, the same morning, and people who understand the road.
           </blockquote>
-          <div className="row gap-14 center" style={{ marginTop: 28 }}>
-            <Avatar initials="RK" variant={4} size={46} />
-            <div>
-              <div className="serif" style={{ fontWeight: 600, fontSize: 16 }}>Ravi Krishnan</div>
-              <div className="small muted">Public Health · 3rd year · joined 2024</div>
-            </div>
-          </div>
+          <p className="small muted" style={{ marginTop: 28 }}>Why we're building this.</p>
         </div>
         <div className="col gap-20">
-          {[['40', 'countries represented'], ['120+', 'writing circles'], ['25', 'events each month']].map(([n, l]) => (
+          {[['Weekly', 'writing sprints & quiet rooms'], ['Structured', 'feedback exchange'], ['Monthly', 'workshops, talks & language sessions']].map(([n, l]) => (
             <div key={l} className="card card-pad between" style={{ alignItems: 'center' }}>
               <span className="display h-md" style={{ color: 'var(--brick)' }}>{n}</span>
               <span className="small muted" style={{ maxWidth: '14ch', textAlign: 'right' }}>{l}</span>

@@ -710,23 +710,5 @@ The hardest questions are those that challenge your core claims. Resist the impu
   },
 ];
 
-export const PEER_REQUESTS = [
-  {
-    id: 1,
-    author: 'Javier D.',
-    initials: 'JD',
-    title: 'Results Chapter Excerpt',
-    message: 'Looking for feedback on the clarity of my data interpretation. English is my second language.',
-    wordCount: 800,
-    credits: 10,
-  },
-  {
-    id: 2,
-    author: 'Amara N.',
-    initials: 'AN',
-    title: 'Introduction Draft',
-    message: 'Need help making my research gap argument more convincing.',
-    wordCount: 550,
-    credits: 8,
-  },
-];
+// Peer review requests come from real members; empty until backend data is wired in.
+export const PEER_REQUESTS = [];
